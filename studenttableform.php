@@ -15,9 +15,11 @@ function print_form() {
     echo <<<END
     <div class="content">
     <form action="$_SERVER[PHP_SELF]" method="post">
-            <p> FNAME: <input type="text" name="fname" size="30" id="FNAME" /></p>
-            <p> SALARY: <input type="text" name="salary" size="30" id="SALARY" /></p>
-
+            <p> sid: <input type="text" name="sid" size="30" id="sid" /></p>
+            <p> sname: <input type="text" name="sname" size="30" id="sname" /></p>
+            <p> sex: <input type="text" name="sex" size="30" id="sex" /></p>
+            <p> major: <input type="text" name="major" size="30" id="major" /></p>
+            <p> gpa: <input type="text" name="gpa" size="30" id="gpa" /></p>
 
         <input type="hidden" name="stage" value="process">
         <input type="submit" value="Submit"><input type="reset" value="Clear"></form>
@@ -30,23 +32,30 @@ END;
 function process_form() {
     
     // Database login
-    $dbuser = 'root';
-    $dbpass = 'root';
+    $dbuser = 'jpf7324';
+    $dbpass = 'oxaetoht';
     
     // Grab information from the form
-    $fname = $_POST['fname'];  
-    $salary = $_POST['salary'];
+    $sid = $_POST['sid'];  
+    $sname = $_POST['sname'];
+    $sex = $_POST['sex'];
+    $major = $_POST['major'];
+    $gpa = $_POST['gpa'];
     
     try {
         
         // Connect to database
-        $db = new PDO("mysql:host=localhost;dbname=CS430;charset=utf8", $dbuser, $dbpass); 
+        $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Insert form data into database
-        $stmt = $db->prepare("INSERT INTO `example4.1`(FNAME, SALARY) VALUES (:FNAME, :SALARY)");
-        $stmt->bindValue(':FNAME', $fname);
-        $stmt->bindValue(':SALARY', $salary);
+        $stmt = $db->prepare("INSERT INTO `student`(sid, sname, sex, major, gpa) 
+            VALUES (:sid, :sname, :sex, :major, :gpa)");
+        $stmt->bindValue(':sid', $sid);
+        $stmt->bindValue(':sname', $sname);
+        $stmt->bindValue(':sex', $sex);
+        $stmt->bindValue(':major', $major);
+        $stmt->bindValue(':gpa', $gpa);
         $stmt->execute();
         
     } catch(PDOException $e) {
@@ -54,6 +63,8 @@ function process_form() {
         echo 'error: ' . $e->getMessage();   
         
     }
+    
+    print_form();
 
 }
 
