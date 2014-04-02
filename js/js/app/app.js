@@ -24,11 +24,11 @@ app.factory('insertNameService', function($http) {
    return {
         getInsertNameResult: function() {
              //return the promise directly.
-             return $http.get('/php/examples/json_example.php')
+             return $http.get('./php/examples/json_example.php')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
                         });
         }
-   }
+   };
 });
