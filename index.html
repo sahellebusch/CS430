@@ -13,8 +13,8 @@
       <br />
       <h3>People:</h3>
       <table>
-          <tr ng-repeat="p in person | filter:searchtext">
-              <td>{{ p.name }}</td>
+          <tr ng-repeat="person in persons | filter:searchtext">
+              <td>{{ person.name }}</td>
               <td></td>
           </tr>
           

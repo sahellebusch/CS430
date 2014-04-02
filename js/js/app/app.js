@@ -9,21 +9,22 @@ This web app handles logistics for Truman State Student Government
 // Define the module for the app
 var app = angular.module("stugovapp", []);
 
-app.controller("indexCtr", function( $scope, ajaxService ) {
-    $scope.person = [
-        {"name":"john", "age":"21"},
-        {"name":"sean", "age":"22"}];
+app.controller("indexCtr", function( $scope ) {
+    $scope.persons = [
+        {"name":"john", "age":21},
+        {"name":"sean", "age":22}];
     
-    
-    
+    insertNameService.getInsertNameResult().then(function(result) {
+        $scope.result = result;
+    });
     
 });
 
-app.factory('ajaxService', function($http) {
+app.factory('insertNameService', function($http) {
    return {
-        getFoos: function() {
+        getInsertNameResult: function() {
              //return the promise directly.
-             return $http.post('/php/examples/')
+             return $http.get('/php/examples/json_example.php')
                        .then(function(result) {
                             //resolve the promise as the data
                             return result.data;
@@ -31,7 +32,3 @@ app.factory('ajaxService', function($http) {
         }
    }
 });
-
-myService.getFoos().then(function(foos) {
-        $scope.foos = foos;
-    });
