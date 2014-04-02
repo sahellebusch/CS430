@@ -5,7 +5,7 @@ $JSONarray = json_decode($JSON);
 var_dump($JSONarray);
 
 //Increment
-$JSON[0].age++;
+$JSON[0][1].age++;
 var_dump($JSON);
 
 //Convert to JSON
