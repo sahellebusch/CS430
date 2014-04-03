@@ -13,10 +13,9 @@
       <br />
       <h3>People:</h3>
       <table>
-          <tr ng-repeat="person in persons | filter:searchtext">
-              <td>{{ person.name }}</td>
-              <td></td>
-          </tr>
+          <ul ng-repeat="person in persons | filter:searchtext">
+              <li>{{ person.name }}</li>
+          </ul>
           
       </table>
     </div>
