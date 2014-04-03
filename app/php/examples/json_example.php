@@ -1,10 +1,13 @@
 
 <?php
+/*
 if(!isset($_GET['data'])) {
     header('400 bad request');
     exit;
 }
+
 else {
+    */
     try {
  
     // Database login
@@ -26,7 +29,8 @@ else {
         echo 'error: ' . $e->getMessage();   
         
     }
-}
+
+//}
 
 
 
