@@ -1,3 +1,4 @@
+
 <?php
 if(!isset($_GET['data'])) {
     header('400 bad request');
@@ -11,18 +12,14 @@ else {
     $dbpass = 'oxaetoht';
     
     //Connect to DB
-    $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) 
-             VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
-        $stmt->bindValue(':username', 'TEST');
-        $stmt->bindValue(':banner', 123456789);
-        $stmt->bindValue(':phone', 1234567987);
-        $stmt->bindValue(':date_joined', 2014-02-02);
-        $stmt->bindValue(':first_name', 'TOMMY');
-        $stmt->bindValue(':last_name', 'TESTER');
-        $stmt->execute();
+    $stmt = $pdo->prepare("SELECT * FROM person");
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $json = json_encode($result);
+        
     }  catch(PDOException $e) {
         
         echo 'error: ' . $e->getMessage();   
@@ -34,7 +31,13 @@ else {
 
 
 
-////Get and convert
+//$pdo=new PDO("mysql:dbname=database;host=127.0.0.1","user","password");
+//$statement=$pdo->prepare("SELECT * FROM table");
+//$statement->execute();
+//$results=$statement->fetchAll(PDO::FETCH_ASSOC);
+//$json=json_encode($results);
+
+//Get and convert
 //if(isset($_POST['data'])) {
 //    //Get
 //    $JSON = $_POST['data'];
