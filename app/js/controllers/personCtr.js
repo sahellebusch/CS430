@@ -1,7 +1,7 @@
 /*
 Author: John Foley
 Date: 4.2.14
-This web app handles logistics for Truman State Student Government
+Controller to show senators from the database `persons` table
 */
 
 /*global angular, console */
@@ -9,15 +9,17 @@ This web app handles logistics for Truman State Student Government
 // Define the module for the app
 var app = angular.module("stugovapp", []);
 
-app.controller("indexCtr", function( $scope, $http ) {
+app.controller("personCtr", function( $scope, $http ) {
     
-    $scope.status = "Good so far";
-    
+    // PHP file that AJAX is calling
     $scope.url = 'app/php/examples/json_example.php'; 
     
-    $scope.persons = somePeople($http);
+    // The actual place the model uses to hold the data
+    $scope.persons = getPeople($http);
     
-    function somePeople($http) {
+    // Function for AJAX calls
+    // Don't keep this, make it a service and use the service
+    function getPeople($http) {
         /*
         return [{"name":"John", "age":21},
         {"name":"Sean", "age":22}];
@@ -26,7 +28,8 @@ app.controller("indexCtr", function( $scope, $http ) {
         
         $http.get($scope.url)
         .then(function(result) {
-            console.log(result.data[0].username);
+            
+            // Place data into scope
             $scope.persons = result.data;
 
         });
