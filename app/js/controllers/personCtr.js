@@ -11,13 +11,35 @@ var app = angular.module("stugovapp", []);
 
 app.controller("personCtr", function( $scope, personAjax ) {
     
-    // PHP file that AJAX is calling
-    $scope.url = 'app/php/examples/json_example.php'; 
     
+    
+    /*
     // The actual place the model uses to hold the data
     personAjax.getPerson().then(function(data) {
             $scope.persons = data;
         });
+        */
+    
+    // maybe with or without paranthesis
+    personAjax.getPerson().then( function( result ) {
+        $scope.persons = result.data;
+    });
     
     
+});
+
+app.factory('personAjax', function( $http ) {
+    
+    return {
+            
+        getPerson : function() {
+            
+            // PHP file that AJAX is calling
+            var url = 'app/php/examples/json_example.php'; 
+            
+            return $http.get('app/php/examples/json_example.php');
+            
+        }
+        
+    };
 });
