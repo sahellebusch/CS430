@@ -9,37 +9,18 @@ Controller to show senators from the database `persons` table
 // Define the module for the app
 var app = angular.module("stugovapp", []);
 
+// Name: personCtr
+// Last Modified: 4.9.14
+// Controller for the person page
+// Params/Dependencies: $scope
+// Services: personAjax
 app.controller("personCtr", function( $scope, personAjax ) {
     
-    
-    
-    /*
-    // The actual place the model uses to hold the data
-    personAjax.getPerson().then(function(data) {
-            $scope.persons = data;
-        });
-        */
-    
-    // maybe with or without paranthesis
+    // Call the service personAjax and then use the returned
+    // data to build the person object
     personAjax.getPerson().then( function( result ) {
         $scope.persons = result.data;
     });
     
     
-});
-
-app.factory('personAjax', function( $http ) {
-    
-    return {
-            
-        getPerson : function() {
-            
-            // PHP file that AJAX is calling
-            var url = 'app/php/examples/json_example.php'; 
-            
-            return $http.get('app/php/examples/json_example.php');
-            
-        }
-        
-    };
 });
