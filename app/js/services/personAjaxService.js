@@ -6,7 +6,7 @@ Written to access senators from the database backend
 */
 
 
-/* global app */
+/* global app, console*/
 
 // Factory that uses $http dependency
 // Name: personAjax

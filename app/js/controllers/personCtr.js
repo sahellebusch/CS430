@@ -19,7 +19,7 @@ app.controller("personCtr", function( $scope, personAjax ) {
     // Call the service personAjax and then use the returned
     // data to build the person object
     personAjax.getPerson().then( function( result ) {
-        $scope.persons = result.data;
+        $scope.persons = result.data;  
     });
     
     
