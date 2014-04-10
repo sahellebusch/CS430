@@ -1,11 +1,12 @@
-<!--
-Author: Sean Hellebusch
-Date: 4.10.14
-PHP Backend test to retrieve all 'persons' in student senate
--->
+
 
 
 <?php
+/*
+Author: Sean Hellebusch
+Date: 4.10.14
+PHP Backend test to retrieve all 'persons' in student senate
+*/
 
     try {
  
