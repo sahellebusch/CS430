@@ -6,21 +6,23 @@
  * Last Modified: 4.9.14
 */
 
+// Primary app initilization
 var stugovApp = angular.module('stugovApp', [
     'ngRoute',
     'stugovControllers'
 ]);
 
+// Configure routing for each partial page
 stugovApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/index', {
         templateUrl: 'app/js/partials/pageList.html',
-        controller: 'indexCtrl'
+        controller: 'indexCtr'
       })
     .when('/person', {
         templateUrl: 'app/js/partials/personList.html',
-        controller: 'personCtrl'
+        controller: 'personCtr'
     })
     .otherwise({
         redirectTo: '/index'

@@ -6,14 +6,14 @@ Written to access senators from the database backend
 */
 
 
-/* global app, console*/
+/* global stugovApp, console*/
 
 // Factory that uses $http dependency
 // Name: personAjax
 // Last Modified: 4.9.14
 // Parms/Dependencies: $http
 // Returns json of Senator information
-app.factory('personAjax', function( $http ) {
+stugovApp.factory('personAjax', function( $http ) {
     
     return {
             
