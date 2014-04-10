@@ -1,0 +1,15 @@
+<h2>Senators</h2>
+        
+        <div>
+            
+            Search: <input type="text" ng-model="searchtext" />
+            
+            <br />
+            
+            <h3>Senators by username:</h3>
+
+            <ul ng-repeat="person in persons | filter:searchtext">
+                <li>{{ person.username }}</li>
+            </ul>
+
+        </div>
