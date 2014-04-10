@@ -1,13 +1,12 @@
+<!--
+Author: Sean Hellebusch
+Date: 4.10.14
+PHP Backend test to retrieve all 'persons' in student senate
+-->
+
 
 <?php
-/*
-if(!isset($_GET['data'])) {
-    header('400 bad request');
-    exit;
-}
 
-else {
-    */
     try {
  
     // Database login
@@ -30,28 +29,4 @@ else {
         
     }
 
-//}
-
-
-
-
-
-//$pdo=new PDO("mysql:dbname=database;host=127.0.0.1","user","password");
-//$statement=$pdo->prepare("SELECT * FROM table");
-//$statement->execute();
-//$results=$statement->fetchAll(PDO::FETCH_ASSOC);
-//$json=json_encode($results);
-
-//Get and convert
-//if(isset($_POST['data'])) {
-//    //Get
-//    $JSON = $_POST['data'];
-//    $jsonData = json_decode($JSON);
-//    var_dump($jsonData);
-//    //Manipulate (increment age)
-//    $JSON[0][1].age++;
-//    var_dump($JSON);
-//}
-////Convert to JSON and give back
-//echo json_encode($jsonData);
 ?>
