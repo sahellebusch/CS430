@@ -6,9 +6,7 @@
     <h3>Pages to choose from:</h3>
 
     <ul ng-repeat="page in pages | filter:searchtext">
-        <a href="#/person">{{ page.pageName }}</a>
+        <a href="#/{{ page.address }}">{{ page.pageName }}</a>
     </ul>
-    
-    {{ ex }}
     
 </div>

@@ -5,7 +5,7 @@ Date: 4.2.14
 Controller for index page. Lists page options and routing.
 */
 
-/*global angular, console, searchtext*/
+/*global angular, console*/
 
 // Define the module for the app
 var stugovControllers = angular.module("stugovControllers", []);
@@ -18,11 +18,10 @@ stugovControllers.controller("indexCtr", function( $scope, $http ) {
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
     $scope.pages = [
-        {"pageName":"Home", "address":"index.html"},
-        {"pageName":"Senators", "address":"person.html"}
+        {"pageName":"Home", "address":"index"},
+        {"pageName":"Senators", "address":"person"},
+        {"pageName":"Meetings", "address":"meetings"}
     ];
-    
-    $scope.ex = $scope.searchtext;
 });
 
 // Name: personCtr
@@ -44,13 +43,11 @@ stugovControllers.controller("personCtr", function( $scope, personAjax ) {
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", function( $scope, meetingAjax ) {
+stugovControllers.controller("meetingCtr", function( $scope ) {
     
-    // Call the service personAjax and then use the returned
-    // data to build the person object
-    meetingAjax.getMeeting().then( function( result ) {
-        $scope.meetings = result.data;  
-    });
-    
-    
+    // Updates the variables accordingly
+    $scope.update = function(type) {
+        $scope.master = angular.copy(type);
+    };
+      
 });
