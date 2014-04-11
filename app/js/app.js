@@ -17,11 +17,11 @@ stugovApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
     .when('/index', {
-        templateUrl: 'app/js/partials/pageList.html',
+        templateUrl: 'app/js/partials/front.html',
         controller: 'indexCtr'
       })
     .when('/person', {
-        templateUrl: 'app/js/partials/personList.html',
+        templateUrl: 'app/js/partials/person.html',
         controller: 'personCtr'
     })
     .when('/meetings', {
