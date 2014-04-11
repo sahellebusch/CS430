@@ -18,7 +18,7 @@ stugovApp.config(['$routeProvider',
     $routeProvider
     .when('/index', {
         templateUrl: 'app/js/partials/front.html',
-        controller: 'indexCtr'
+        controller: 'frontCtr'
       })
     .when('/person', {
         templateUrl: 'app/js/partials/person.html',

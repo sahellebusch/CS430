@@ -1,0 +1,6 @@
+[
+    {"name":"Home", "goto":"index"},
+    {"name":"Senators", "goto":"person"},
+    {"name":"Meetings", "goto":"meetings"},
+    {"name":"Kelsie", "goto":"kelsie"}
+]

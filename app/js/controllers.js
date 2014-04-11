@@ -13,15 +13,13 @@ var stugovControllers = angular.module("stugovControllers", []);
 // Name: indexCtr
 // Last Modified: 4.9.14
 // Controller for the front (index) page
-stugovControllers.controller("indexCtr", function( $scope, $http ) {
+stugovControllers.controller("frontCtr", function( $scope, $http, navAjax ) {
     
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
-    $scope.pages = [
-        {"pageName":"Home", "address":"index"},
-        {"pageName":"Senators", "address":"person"},
-        {"pageName":"Meetings", "address":"meetings"}
-    ];
+    navAjax.getNav().then( function( result ) {
+        $scope.pages = result.data;
+    });
 });
 
 // Name: personCtr
@@ -29,7 +27,13 @@ stugovControllers.controller("indexCtr", function( $scope, $http ) {
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("personCtr", function( $scope, personAjax ) {
+stugovControllers.controller("personCtr", function( $scope, personAjax, navAjax ) {
+    
+    // Using a hardcoded JSON of objects, for now
+    // Future plans to use database backend for this
+    navAjax.getNav().then( function( result ) {
+        $scope.pages = result.data;
+    });
     
     // Call the service personAjax and then use the returned
     // data to build the person object
@@ -43,7 +47,13 @@ stugovControllers.controller("personCtr", function( $scope, personAjax ) {
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", function( $scope ) {
+stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
+    
+    // Using a hardcoded JSON of objects, for now
+    // Future plans to use database backend for this
+    navAjax.getNav().then( function( result ) {
+        $scope.pages = result.data;
+    });
     
     // Updates the variables accordingly
     $scope.update = function(type) {
