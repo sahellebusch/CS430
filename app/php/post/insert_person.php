@@ -9,7 +9,7 @@
 /*
  * This is the format of the JSON object.
  *
- * {"authors": [
+ * {"person_info": [
  *    {"username": "abc1234",
  *     "banner": "123456789",
  *     "phone": "132-456-7890"
