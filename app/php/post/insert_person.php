@@ -32,7 +32,7 @@ try {
     $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) 
          VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
     // Convert date joined to SQL format
-    $date_joined_SQL_format = date('Y-m-d', strtotime(str_replace('-', '/', {$person_date->date_joined})));
+    $date_joined_SQL_format = date('Y-m-d', strtotime(str_replace('-', '/', {$person_data->date_joined})));
     // Bind values
     $stmt->bindValue(':username', {$person_data->username});
     $stmt->bindValue(':banner', {$person_data->banner});
