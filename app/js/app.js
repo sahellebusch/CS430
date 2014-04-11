@@ -24,6 +24,10 @@ stugovApp.config(['$routeProvider',
         templateUrl: 'app/js/partials/personList.html',
         controller: 'personCtr'
     })
+    .when('/meeting', {
+        templateUrl: 'app/js/partials/meeting.html',
+        controller: 'meetingCtr'
+    })
     .otherwise({
         redirectTo: '/index'
       });
