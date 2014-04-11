@@ -70,7 +70,7 @@ stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
 stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, personDetailAjax, navAjax ) {
     
     // Capture the person from the URL from previous page
-    $scope.pid = $routeParams.person;
+    $scope.pid = $routeParams.pid;
     
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
@@ -81,7 +81,12 @@ stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, 
     // Call the service personDetailAjax and then use the returned
     // data to build the person object
     personDetailAjax.getPerson().then( function( result ) {
-        if ()
+        for (var i=0; i<result.data.length; i++) {
+            if (result.data[i].pid == $scope.pid) {
+                return result.data[i];
+        }
+            
+}
         $scope.info = result.data;  
     });
 });

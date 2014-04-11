@@ -24,7 +24,7 @@ stugovApp.config(['$routeProvider',
         templateUrl: 'app/js/partials/person.html',
         controller: 'personCtr'
     })
-    .when('/person/:person', {
+    .when('/person/:pid', {
         templateUrl: 'app/js/partials/personDetail.html',
         controller: 'personDetailCtr'
     })
