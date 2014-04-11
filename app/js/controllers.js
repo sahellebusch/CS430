@@ -61,3 +61,27 @@ stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
     };
       
 });
+
+// Name: personDetailCtr
+// Last Modified: 4.11.14
+// Controller for a specific person
+// Params/Dependencies: $scope, $http
+// Services: personDetailAjax, navAjax
+stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, personDetailAjax, navAjax ) {
+    
+    // Capture the person from the URL from previous page
+    $scope.pid = $routeParams.person;
+    
+    // Using a hardcoded JSON of objects, for now
+    // Future plans to use database backend for this
+    navAjax.getNav().then( function( result ) {
+        $scope.pages = result.data;
+    });
+    
+    // Call the service personDetailAjax and then use the returned
+    // data to build the person object
+    personDetailAjax.getPerson().then( function( result ) {
+        if ()
+        $scope.info = result.data;  
+    });
+});
