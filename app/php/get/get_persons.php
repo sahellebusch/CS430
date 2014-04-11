@@ -1,6 +1,3 @@
-
-
-
 <?php
 /*
 Author: Sean Hellebusch
