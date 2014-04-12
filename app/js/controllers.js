@@ -60,12 +60,6 @@ stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, 
     // Capture the person from the URL from previous page
     $scope.pid = $routeParams.pid;
 
-    // Using a hardcoded JSON of objects, for now
-    // Future plans to use database backend for this
-    navAjax.getNav().then(function (result) {
-        $scope.pages = result.data;
-    });
-
     // Call the service personDetailAjax and then use the returned
     // data to build the person object
     personAjax.getPerson().then(function (result) {
