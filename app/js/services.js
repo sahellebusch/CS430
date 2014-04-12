@@ -12,21 +12,21 @@ Written to access senators from the database backend
 // Last Modified: 4.9.14
 // Parms/Dependencies: $http
 // Returns json of Senator information
-stugovApp.factory('personAjax', function( $http ) {
-    
+stugovApp.factory('personAjax', function ($http) {
+
     return {
-            
+
         // Function to return person JSON
-        getPerson : function() {
-            
+        getPerson: function () {
+
             // PHP file that AJAX is calling
-            var url = 'app/php/get/get_persons.php'; 
-            
+            var url = 'app/php/get/get_persons.php';
+
             // Return results up the line
             return $http.get(url);
-            
+
         }
-        
+
     };
 });
 
@@ -35,21 +35,21 @@ stugovApp.factory('personAjax', function( $http ) {
 // Last Modified: 4.10.14
 // Parms/Dependencies: $http
 // Returns json of nav information
-stugovApp.factory('navAjax', function( $http ) {
-    
+stugovApp.factory('navAjax', function ($http) {
+
     return {
-            
+
         // Function to return person JSON
-        getNav : function() {
-            
+        getNav: function () {
+
             // PHP file that AJAX is calling
-            var url = 'app/json/navList.json'; 
-            
+            var url = 'app/json/navList.json';
+
             // Return results up the line
             return $http.get(url);
-            
+
         }
-        
+
     };
 });
 
@@ -58,20 +58,20 @@ stugovApp.factory('navAjax', function( $http ) {
 // Last Modified: 4.11.14
 // Parms/Dependencies: $http
 // Returns json of person information
-stugovApp.factory('personDetailAjax', function( $http ) {
-    
+stugovApp.factory('personDetailAjax', function ($http) {
+
     return {
-            
+
         // Function to return person JSON
-        getPerson : function() {
-            
+        getPerson: function () {
+
             // PHP file that AJAX is calling
-            var url = 'app/json/mockperson.json'; 
-            
+            var url = 'app/json/mockperson.json';
+
             // Return results up the line
             return $http.get(url);
-            
+
         }
-        
+
     };
 });
