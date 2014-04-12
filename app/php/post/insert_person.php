@@ -19,7 +19,7 @@
  *  ]}
  */
 
-echo $person_data = json_decode(file_get_contents("php://input"), TRUE);
+echo var_dump(json_decode(file_get_contents("php://input"), TRUE));
 
 //try {
 //    // Decode JSON object

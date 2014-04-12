@@ -45,8 +45,27 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 
         // Updates the variables accordingly
         $scope.update = function (type) {
-            $scope.info = [{"type": type}];
-            addPersonAjax.insertPerson($scope.info).then(function(result) {
+            $scope.info = {
+                "person_info": [{
+                        "username": type
+                },
+                    {
+                        "banner": type
+                },
+                    {
+                        "phone": type
+                },
+                    {
+                        "date_joined": type
+                },
+                    {
+                        "first_name": type
+                },
+                    {
+                        "last_name": type
+                }]
+            };
+            addPersonAjax.insertPerson($scope.info).then(function (result) {
                 console.log(result.data);
             });
         };
