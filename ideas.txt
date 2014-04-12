@@ -1,2 +1,16 @@
 1. give info to PHP
-2. 
+**2. use route parms to specify a user page
+3. input person to the database
+4. input meeting to the database
+5. look at past meetings
+6. alter meetings
+7. create an event
+8. alter an event
+9. create an item
+10. alter an item
+11. return specific person info for detail page
+
+
+Questions/Concerns:
+    Why would you alter a meeting?  In our DB, a meeting is just an id and date.
+    What is 'attendence_committee'.present supposed to be?
