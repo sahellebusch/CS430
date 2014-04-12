@@ -13,21 +13,21 @@ var stugovControllers = angular.module("stugovControllers", []);
 // Name: indexCtr
 // Last Modified: 4.9.14
 // Controller for the front (index) page
-stugovControllers.controller("frontCtr", function( $scope, $http, navAjax ) {
+stugovControllers.controller("frontCtr", ['$scope', '$http', 'navAjax', function( $scope, $http, navAjax ) {
     
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
     navAjax.getNav().then( function( result ) {
         $scope.pages = result.data;
     });
-});
+}]);
 
 // Name: personCtr
 // Last Modified: 4.9.14
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("personCtr", function( $scope, personAjax, navAjax ) {
+stugovControllers.controller("personCtr", ['$scope', 'personAjax', 'navAjax', function( $scope, personAjax, navAjax ) {
     
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
@@ -41,14 +41,14 @@ stugovControllers.controller("personCtr", function( $scope, personAjax, navAjax 
         console.log(result.data);
         $scope.persons = result.data;  
     });
-});
+}]);
 
 // Name: meetingCtr
 // Last Modified: 4.9.14
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
+stugovControllers.controller("meetingCtr", ['$scope', 'navAjax', function( $scope, navAjax ) {
     
     // Using a hardcoded JSON of objects, for now
     // Future plans to use database backend for this
@@ -61,7 +61,7 @@ stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
         $scope.master = angular.copy(type);
     };
       
-});
+}]);
 
 // Name: personDetailCtr
 // Last Modified: 4.11.14
