@@ -27,7 +27,7 @@
     <h3>Senators by username:</h3>
 
     <ul ng-repeat="person in persons | filter:searchtext">
-        <li>{{ person.username }}</li>
+        <li><a href="#/person/{{ person.p_id }}">{{ person.username }}</a></li>
     </ul>
 
 </div>

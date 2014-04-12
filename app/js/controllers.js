@@ -38,6 +38,7 @@ stugovControllers.controller("personCtr", function( $scope, personAjax, navAjax 
     // Call the service personAjax and then use the returned
     // data to build the person object
     personAjax.getPerson().then( function( result ) {
+        console.log(result.data);
         $scope.persons = result.data;  
     });
 });
@@ -67,7 +68,7 @@ stugovControllers.controller("meetingCtr", function( $scope, navAjax ) {
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax, navAjax
-stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, personDetailAjax, navAjax ) {
+stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, personAjax, navAjax ) {
     
     // Capture the person from the URL from previous page
     $scope.pid = $routeParams.pid;
@@ -80,13 +81,12 @@ stugovControllers.controller("personDetailCtr", function( $scope, $routeParams, 
     
     // Call the service personDetailAjax and then use the returned
     // data to build the person object
-    personDetailAjax.getPerson().then( function( result ) {
-        for (var i=0; i<result.data.length; i++) {
-            if (result.data[i].pid == $scope.pid) {
-                return result.data[i];
-        }
-            
-}
-        $scope.info = result.data;  
+    personAjax.getPerson().then( function( result ) {
+        for (var i = 0; i < result.data.length; i++) {
+            if (result.data[i].p_id == $scope.pid) {
+                console.log(result.data[i]);
+                $scope.info = result.data[i];
+            }   
+        }   
     });
 });
