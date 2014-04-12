@@ -19,7 +19,7 @@
  *  ]}
  */
     
-echo TRUE;
+echo 'success';
 
 //try {
 //    // Decode JSON object
