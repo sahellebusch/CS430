@@ -1,5 +1,5 @@
 1. give info to PHP
-2. use route parms to specify a user page
+**2. use route parms to specify a user page
 3. input person to the database
 4. input meeting to the database
 5. look at past meetings
