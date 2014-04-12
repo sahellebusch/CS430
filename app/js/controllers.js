@@ -24,7 +24,7 @@ stugovControllers.controller("frontCtr", ['$scope',
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("personCtr", ['$scope', 'personAjax', 'navAjax',
+stugovControllers.controller("personCtr", ['$scope', 'personAjax',
     function ($scope, personAjax, navAjax) {
 
         // Call the service personAjax and then use the returned
@@ -40,7 +40,7 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax', 'navAjax',
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", ['$scope', 'navAjax',
+stugovControllers.controller("meetingCtr", ['$scope',
     function ($scope, navAjax) {
 
         // Updates the variables accordingly
@@ -55,16 +55,10 @@ stugovControllers.controller("meetingCtr", ['$scope', 'navAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax, navAjax
-stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, personAjax, navAjax) {
+stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, personAjax) {
 
     // Capture the person from the URL from previous page
     $scope.pid = $routeParams.pid;
-
-    // Using a hardcoded JSON of objects, for now
-    // Future plans to use database backend for this
-    navAjax.getNav().then(function (result) {
-        $scope.pages = result.data;
-    });
 
     // Call the service personDetailAjax and then use the returned
     // data to build the person object
