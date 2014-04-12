@@ -40,12 +40,15 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", ['$scope',
-    function ($scope) {
+stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
+    function ($scope, addPersonAjax) {
 
         // Updates the variables accordingly
         $scope.update = function (type) {
-            $scope.master = angular.copy(type);
+            $scope.info = [{"type": type}];
+            addPersonAjax.insertPerson($scope.info).then(function(result) {
+                console.log(result.data);
+            });
         };
 
 }]);

@@ -52,3 +52,26 @@ stugovApp.factory('personDetailAjax', function ($http) {
 
     };
 });
+
+// Factory that gives info to php to insert person
+// Name: addPersonAjax
+// Last Modified: 4.12.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('addPersonAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        insertPerson: function (info) {
+
+            // PHP file that AJAX is calling
+            var url = 'app/post/insert_person.php';
+
+            // Return results up the line
+            return $http.post(url, info);
+
+        }
+
+    };
+});
