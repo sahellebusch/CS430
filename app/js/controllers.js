@@ -45,26 +45,24 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 
         // Updates the variables accordingly
         $scope.update = function (type) {
-            $scope.info = {
-                "person_info": [{
-                        "username": type
+            $scope.info = [{
+                    "username": type
                 },
-                    {
-                        "banner": type
+                {
+                    "banner": type
                 },
-                    {
-                        "phone": type
+                {
+                    "phone": type
                 },
-                    {
-                        "date_joined": type
+                {
+                    "date_joined": type
                 },
-                    {
-                        "first_name": type
+                {
+                    "first_name": type
                 },
-                    {
-                        "last_name": type
-                }]
-            };
+                {
+                    "last_name": type
+                }];
             addPersonAjax.insertPerson($scope.info).then(function (result) {
                 console.log(result.data);
             });
@@ -76,8 +74,9 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 // Last Modified: 4.11.14
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
-// Services: personDetailAjax, navAjax
-stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, personAjax) {
+// Services: personDetailAjax
+stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax',
+                                                 function ($scope, $routeParams, personAjax) {
 
     // Capture the person from the URL from previous page
     $scope.pid = $routeParams.pid;
@@ -87,9 +86,51 @@ stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, 
     personAjax.getPerson().then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
             if (result.data[i].p_id == $scope.pid) {
-                console.log(result.data[i]);
                 $scope.info = result.data[i];
             }
         }
     });
-});
+}]);
+
+// Name: personDetailEditCtr
+// Last Modified: 4.12.14
+// Controller for changing a specific person record
+// Params/Dependencies: $scope, $http
+// Services: personDetailAjax
+stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', 'personAjax', 'addPersonAjax',
+                                                     function ($scope, $routeParams, personAjax, addPersonAjax) {
+
+        // Capture the person from the URL from previous page
+        $scope.pid = $routeParams.pid;
+
+        
+                                                         
+        
+
+        // Updates the variables accordingly
+        $scope.update = function (username, first_name, last_name, banner, date_joined, phone) {
+            $scope.info = [{
+                    "username": '1'
+                },
+                {
+                    "banner": banner
+                },
+                {
+                    "phone": phone
+                },
+                {
+                    "date_joined": date_joined
+                },
+                {
+                    "first_name": first_name
+                },
+                {
+                    "last_name": last_name
+                }];
+
+            addPersonAjax.insertPerson($scope.info).then(function (result) {
+                console.log(result.data);
+            });
+
+        };
+                                                     }]);

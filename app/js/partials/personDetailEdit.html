@@ -1,0 +1,16 @@
+<div>
+
+    <h3>{{ info.first_name }}'s Information:</h3>
+
+    Username: <input type="text" ng-model="username" value="{{ info.username }}" /><br />
+    First Name: <input type="text" ng-model="first_name" value="{{ info.first_name }}"/><br />
+    Last Name: <input type="text" ng-model="last_name" value="{{ info.last_name }}"/><br />
+    Banner: <input type="text" ng-model="banner" value="{{ info.banner }}"/><br />
+    Date Joined: <input type="text" ng-model="date_joined" value="{{ info.date_joined }}"/><br />
+    Phone Number: <input type="text" ng-model="phone" value="{{ info.phone }}"/>
+
+    <br />
+
+    <button ng-click="update(username, first_name, last_name, banner, date_joined, phone)"></button>
+
+</div>
