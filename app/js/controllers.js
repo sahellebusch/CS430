@@ -78,18 +78,18 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax',
                                                  function ($scope, $routeParams, personAjax) {
 
-    // Capture the person from the URL from previous page
-    $scope.pid = $routeParams.pid;
+        // Capture the person from the URL from previous page
+        $scope.pid = $routeParams.pid;
 
-    // Call the service personDetailAjax and then use the returned
-    // data to build the person object
-    personAjax.getPerson().then(function (result) {
-        for (var i = 0; i < result.data.length; i++) {
-            if (result.data[i].p_id == $scope.pid) {
-                $scope.info = result.data[i];
+        // Call the service personDetailAjax and then use the returned
+        // data to build the person object
+        personAjax.getPerson().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].p_id == $scope.pid) {
+                    $scope.info = result.data[i];
+                }
             }
-        }
-    });
+        });
 }]);
 
 // Name: personDetailEditCtr
@@ -103,9 +103,17 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
         // Capture the person from the URL from previous page
         $scope.pid = $routeParams.pid;
 
-        
-                                                         
-        
+        // Call the service personDetailAjax and then use the returned
+        // data to build the person object
+        personAjax.getPerson().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].p_id == $scope.pid) {
+                    $scope.info = result.data[i];
+                }
+            }
+        });
+
+
 
         // Updates the variables accordingly
         $scope.update = function (username, first_name, last_name, banner, date_joined, phone) {

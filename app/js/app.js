@@ -30,19 +30,7 @@ stugovApp.config(['$scope', '$routeProvider', 'personAjax',
         })
         .when('/person/edit/:pid', {
                 templateUrl: 'app/js/partials/personDetailEdit.html',
-                controller: 'personDetailEditCtr',
-                resolve: function () {
-                    // Call the service personDetailAjax and then use the returned
-                    // data to build the person object
-                    personAjax.getPerson().then(function (result) {
-                        for (var i = 0; i < result.data.length; i++) {
-                            if (result.data[i].p_id == $scope.pid) {
-                                console.log(result.data[i]);
-                                $scope.info = result.data[i];
-                            }
-                        }
-                    });
-                }
+                controller: 'personDetailEditCtr'
             })
             .when('/meetings', {
     templateUrl: 'app/js/partials/meeting.html',

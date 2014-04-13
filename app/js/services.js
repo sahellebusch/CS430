@@ -30,29 +30,6 @@ stugovApp.factory('personAjax', function ($http) {
     };
 });
 
-// Factory that returns a person's info
-// Name: personDetailAjax
-// Last Modified: 4.11.14
-// Parms/Dependencies: $http
-// Returns json of person information
-stugovApp.factory('personDetailAjax', function ($http) {
-
-    return {
-
-        // Function to return person JSON
-        getPerson: function () {
-
-            // PHP file that AJAX is calling
-            var url = 'app/json/mockperson.json';
-
-            // Return results up the line
-            return $http.get(url);
-
-        }
-
-    };
-});
-
 // Factory that gives info to php to insert person
 // Name: addPersonAjax
 // Last Modified: 4.12.14
