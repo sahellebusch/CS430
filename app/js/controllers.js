@@ -62,11 +62,12 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
                 },
                 {
                     "last_name": type
-                }];
-            addPersonAjax.insertPerson($scope.info).then(function (result) {
+                }]; 
+        };
+        
+        addPersonAjax.insertPerson($scope.info).then(function (result) {
                 console.log(result.data);
             });
-        };
 
 }]);
 
@@ -98,7 +99,7 @@ stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'pers
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
 stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', 'personAjax', 'addPersonAjax',
-                                                     function ($scope, $routeParams, personAjax, addPersonAjax) {
+        function ($scope, $routeParams, personAjax, addPersonAjax) {
 
         // Capture the person from the URL from previous page
         $scope.pid = $routeParams.pid;
@@ -112,8 +113,6 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
                 }
             }
         });
-
-
 
         // Updates the variables accordingly
         $scope.update = function (username, first_name, last_name, banner, date_joined, phone) {
@@ -141,4 +140,4 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
             });
 
         };
-                                                     }]);
+}]);
