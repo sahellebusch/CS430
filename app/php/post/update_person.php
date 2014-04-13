@@ -2,8 +2,8 @@
 
 /*
  * Author: Sean Hellebusch
- * Date: 4.11.14
- * PHP backend to insert a person into the DB
+ * Date: 4.12.14
+ * PHP backend to update a person into the DB
  */
 
 /*
@@ -15,7 +15,8 @@
  *     "phone": "132-456-7890"
  *     "date_joined: "mm/dd/yyyy",
  *     "first_name": "John",
- *     "last_name": "Doe"}
+ *     "last_name": "Doe"},
+ *     "p_id: "######"
  *  ]}
  */
 
@@ -29,8 +30,8 @@ try {
     $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Prepare Statement
-    $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) 
-         VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
+    $stmt = $db->prepare("UPDATE person SET username = :username banner = :banner phone = :phone date_joined = :date_joined                         first_name = :first_name last_name = :last_name WHERE p_id = :p_id 
+        VALUES (:p_id, :username, :banner, :phone, :date_joined, :first_name, :last_name)");
     // Convert date joined to SQL format
     $date_joined_SQL_format = date('Y-m-d', strtotime(str_replace('-', '/', $person_data[3]['date_joined'])));
     // Bind values
@@ -40,6 +41,7 @@ try {
     $stmt->bindValue(':first_name', $person_data[4]['first_name']);
     $stmt->bindValue(':last_name', $person_data[5]['last_name']);
     $stmt->bindValue(':date_joined', $date_joined_SQL_format);
+    $stmt->bindValue(':p_id', $person_data[6]['p_id'];
     // Execute SQL
     $stmt->execute();
     // Report Success
