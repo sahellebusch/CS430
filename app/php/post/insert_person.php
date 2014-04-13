@@ -42,9 +42,12 @@ try {
     $stmt->bindValue(':date_joined', $date_joined_SQL_format);
     // Execute SQL
     $stmt->execute();
-        
+    $success = TRUE;
+    echo $success;
+    
 }  catch(PDOException $e) {
-        
+        $failure = FALSE;
+        echo $failure;
         echo 'error: ' . $e->getMessage();   
         
     }
