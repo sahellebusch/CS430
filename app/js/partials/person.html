@@ -10,9 +10,9 @@
     <h3>Senators by username:</h3>
 
     <ul ng-repeat="person in persons | filter:searchtext">
-        <li>
-            <a href="#/person/{{ person.p_id }}">{{ person.username }}</a>
-        </li>
+        
+            <a href="#/person/{{ person.p_id }}" class='btn'>{{ person.first_name }} {{ person.last_name }}</a>
+
     </ul>
 
 </div>
