@@ -30,7 +30,6 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
         // Call the service personAjax and then use the returned
         // data to build the person object
         personAjax.getPerson().then(function (result) {
-            console.log(result.data);
             $scope.persons = result.data;
         });
 }]);
@@ -75,7 +74,8 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, personAjax) {
+stugovControllers.controller
+("personDetailCtr", ['$scope', '$routeParams', 'personAjax', function ($scope, $routeParams, personAjax) {
 
     // Capture the person from the URL from previous page
     $scope.pid = $routeParams.pid;
@@ -85,21 +85,43 @@ stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, 
     personAjax.getPerson().then(function (result) {
         for (var i = 0; i < result.data.length; i++) {
             if (result.data[i].p_id == $scope.pid) {
-                console.log(result.data[i]);
                 $scope.info = result.data[i];
             }
         }
     });
 });
 
-// Name: insertPersonCtr
+// Name: personDetailEditCtr
 // Last Modified: 4.15.14
-// Controller to add a person
-// Params/Dependencies: $scope
-// Services: insertPersonAjax
-stugovControllers.controller("insertPersonCtr", function ($scope, insertPersonAjax) {
+// Controller to edit a specific person
+// Params/Dependencies: $scope, $http
+// Services: personDetailAjax
+stugovControllers.controller
+("personDetailEditCtr", ['$scope', '$routeParams', 'personAjax', 'updatePersonAjax', function ($scope, $routeParams, personAjax, updatePersonAjax) {
 
+    // Capture the person from the URL from previous page
+    $scope.pid = $routeParams.pid;
     
+    // Capture old data so that it's not updated while the user
+    // changes information on the view
+    $scope.old = $scope.info;
 
+    // Call the service personDetailAjax and then use the returned
+    // data to build the person object
+    personAjax.getPerson().then(function (result) {
+        for (var i = 0; i < result.data.length; i++) {
+            if (result.data[i].p_id == $scope.pid) {
+                $scope.info = result.data[i];
+                $scope.old = angular.copy($scope.info);
+            }
+        }
+    });
     
-});
+    // Activation on button click to update person information
+    $scope.update = function(info) {
+        
+        // Send new data to Ajax
+        updatePersonAjax.updatePerson(angular.copy(info));
+        
+    };
+}]);
