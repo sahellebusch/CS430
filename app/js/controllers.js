@@ -74,7 +74,7 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 // Last Modified: 4.11.14
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
-// Services: personDetailAjax, navAjax
+// Services: personDetailAjax
 stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, personAjax) {
 
     // Capture the person from the URL from previous page
@@ -90,4 +90,16 @@ stugovControllers.controller("personDetailCtr", function ($scope, $routeParams, 
             }
         }
     });
+});
+
+// Name: insertPersonCtr
+// Last Modified: 4.15.14
+// Controller to add a person
+// Params/Dependencies: $scope
+// Services: insertPersonAjax
+stugovControllers.controller("insertPersonCtr", function ($scope, insertPersonAjax) {
+
+    
+
+    
 });
