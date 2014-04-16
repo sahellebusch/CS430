@@ -119,7 +119,7 @@ stugovControllers.controller
     
     // Activation on button click to update person information
     $scope.update = function(info) {
-        
+        $scope.master = angular.copy(info);
         // Send new data to Ajax
         updatePersonAjax.updatePerson(angular.copy(info));
         
