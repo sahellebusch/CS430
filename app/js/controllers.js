@@ -89,7 +89,7 @@ stugovControllers.controller
             }
         }
     });
-});
+}]);
 
 // Name: personDetailEditCtr
 // Last Modified: 4.15.14
@@ -124,4 +124,29 @@ stugovControllers.controller
         updatePersonAjax.updatePerson(angular.copy(info));
         
     };
+}]);
+
+// Name: insertPersonCtr
+// Last Modified: 4.11.14
+// Controller to insert a new person
+// Params/Dependencies: $scope
+// Services: insertPersonAjax
+stugovControllers.controller
+("personDetailCtr", ['$scope', 'insertPersonAjax', function ($scope, insertPersonAjax) {
+    
+    // Function to be called when user submits form
+    $scope.update = function(formInfo) {
+        
+        // Copy form data 
+        $scope.info = angular.copy(formInfo);
+        
+        // Call Ajax
+        insertPersonAjax.insertPerson(angular.copy($scope.info)).then(function(result) {
+        // Do something with boolean result
+        });
+    };
+    
+    
+
+    
 }]);

@@ -54,11 +54,11 @@ stugovApp.factory('personDetailAjax', function ($http) {
 });
 
 // Factory that gives info to php to insert person
-// Name: addPersonAjax
-// Last Modified: 4.12.14
+// Name: insertPersonAjax
+// Last Modified: 4.15.14
 // Parms/Dependencies: $http
 // Returns boolean for success or failure
-stugovApp.factory('addPersonAjax', function ($http) {
+stugovApp.factory('insertPersonAjax', function ($http) {
 
     return {
 
