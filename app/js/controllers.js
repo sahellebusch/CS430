@@ -127,12 +127,12 @@ stugovControllers.controller
 }]);
 
 // Name: insertPersonCtr
-// Last Modified: 4.11.14
+// Last Modified: 4.15.14
 // Controller to insert a new person
 // Params/Dependencies: $scope
 // Services: insertPersonAjax
 stugovControllers.controller
-("personDetailCtr", ['$scope', 'insertPersonAjax', function ($scope, insertPersonAjax) {
+("insertPersonCtr", ['$scope', 'insertPersonAjax', function ($scope, insertPersonAjax) {
     
     // Function to be called when user submits form
     $scope.update = function(formInfo) {
@@ -145,8 +145,5 @@ stugovControllers.controller
         // Do something with boolean result
         });
     };
-    
-    
-
     
 }]);
