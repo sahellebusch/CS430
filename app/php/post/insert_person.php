@@ -32,15 +32,22 @@ try {
     // Prepare Statement
     $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) 
          VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
-    // Convert date joined to SQL format
-    $date_joined_SQL_format = date('Y-m-d', strtotime(str_replace('-', '/', $person_data[3]['date_joined'])));
+    
+    // Check to see if date is in correct format.
+    // If not, convert to correct format.
+    $date_joined = $person_data[3]['date_joined']);
+    if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date_joined)){ 
+    }else{ 
+        $date_joined = date('Y-m-d', strtotime(str_replace('-', '/', $date_joined)));
+    }
+    
     // Bind values
     $stmt->bindValue(':username', $person_data[0]['username']);
     $stmt->bindValue(':banner', $person_data[1]['banner']);
     $stmt->bindValue(':phone', $person_data[2]['phone']);
     $stmt->bindValue(':first_name', $person_data[4]['first_name']);
     $stmt->bindValue(':last_name', $person_data[5]['last_name']);
-    $stmt->bindValue(':date_joined', $date_joined_SQL_format);
+    $stmt->bindValue(':date_joined', $date_joined);
     // Execute SQL
     $stmt->execute();
     // Report Success
