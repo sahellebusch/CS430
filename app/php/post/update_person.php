@@ -27,13 +27,23 @@ try {
     $phone = (int) $person_data['phone'];
     $unexcused_total = (int) $person_data['unexcused_total'];
     $excused_total = (int) $person_data['excused_total'];    
-    
+
     // Check to see if date is in correct format, bind.
     // If not, convert to correct format and bind.
     $date_joined = $person_data['date_joined'];
-    if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date_joined)){ 
-    }else{ 
+    if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date_joined)) {
+        if(validateDate($date_joined)) {
+        } else {
+            echo false;
+            exit ("Invalid date");
+        }
+    } else {
         $date_joined = date('Y-m-d', strtotime(str_replace('-', '/', $date_joined)));
+        if(validateDate($date_joined)){
+        } else {
+            echo false;
+            exit ("Invalid date");
+        }
     }
     
     // Bind values
@@ -52,11 +62,19 @@ try {
     echo $success;
     
 }  catch(PDOException $e) {
+    
         // Report failure
         $failure = FALSE;
         echo $failure;
         // Report error
         echo 'error: ' . $e->getMessage();   
         
+    }
+
+    // Function to validate the date.
+    function validateDate($date)
+    {
+        list( $y, $m, $d ) = preg_split( '/[-\.\/ ]/', $date );    
+        return (checkdate( $m, $d, $y ) and $y <= date('Y'));
     }
 ?>
