@@ -74,21 +74,21 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller
-("personDetailCtr", ['$scope', '$routeParams', 'personAjax', function ($scope, $routeParams, personAjax) {
+stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax',
+    function ($scope, $routeParams, personAjax) {
 
-    // Capture the person from the URL from previous page
-    $scope.pid = $routeParams.pid;
+        // Capture the person from the URL from previous page
+        $scope.pid = $routeParams.pid;
 
-    // Call the service personDetailAjax and then use the returned
-    // data to build the person object
-    personAjax.getPerson().then(function (result) {
-        for (var i = 0; i < result.data.length; i++) {
-            if (result.data[i].p_id == $scope.pid) {
-                $scope.info = result.data[i];
+        // Call the service personDetailAjax and then use the returned
+        // data to build the person object
+        personAjax.getPerson().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].p_id == $scope.pid) {
+                    $scope.info = result.data[i];
+                }
             }
-        }
-    });
+        });
 }]);
 
 // Name: personDetailEditCtr
@@ -96,34 +96,41 @@ stugovControllers.controller
 // Controller to edit a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller
-("personDetailEditCtr", ['$scope', '$routeParams', 'personAjax', 'updatePersonAjax', function ($scope, $routeParams, personAjax, updatePersonAjax) {
+stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '$location', 'personAjax', 'updatePersonAjax',
+    function ($scope, $routeParams, $location, personAjax, updatePersonAjax) {
 
-    // Capture the person from the URL from previous page
-    $scope.pid = $routeParams.pid;
-    
-    // Capture old data so that it's not updated while the user
-    // changes information on the view
-    $scope.old = $scope.info;
+        // Capture the person from the URL from previous page
+        $scope.pid = $routeParams.pid;
 
-    // Call the service personDetailAjax and then use the returned
-    // data to build the person object
-    personAjax.getPerson().then(function (result) {
-        for (var i = 0; i < result.data.length; i++) {
-            if (result.data[i].p_id == $scope.pid) {
-                $scope.info = result.data[i];
-                $scope.old = angular.copy($scope.info);
+        // Capture old data so that it's not updated while the user
+        // changes information on the view
+        $scope.old = $scope.info;
+
+        // Call the service personDetailAjax and then use the returned
+        // data to build the person object
+        personAjax.getPerson().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].p_id == $scope.pid) {
+                    $scope.info = result.data[i];
+                    $scope.old = angular.copy($scope.info);
+                }
             }
-        }
-    });
-    
-    // Activation on button click to update person information
-    $scope.update = function(info) {
-        $scope.master = angular.copy(info);
-        // Send new data to Ajax
-        updatePersonAjax.updatePerson(angular.copy(info));
-        
-    };
+        });
+
+        // Activation on button click to update person information
+        $scope.update = function (info) {
+
+            // Send new data to Ajax
+            updatePersonAjax.updatePerson(angular.copy(info)).then(function (result) {
+                console.log(result.data);
+                if (result.data) {
+                    $location.path('/person/editsuccess');
+                } else {
+                    $location.path('/person/editfailure');
+                }
+
+            });
+        };
 }]);
 
 // Name: insertPersonCtr
@@ -131,19 +138,19 @@ stugovControllers.controller
 // Controller to insert a new person
 // Params/Dependencies: $scope
 // Services: insertPersonAjax
-stugovControllers.controller
-("insertPersonCtr", ['$scope', 'insertPersonAjax', function ($scope, insertPersonAjax) {
-    
-    // Function to be called when user submits form
-    $scope.update = function(formInfo) {
-        
-        // Copy form data 
-        $scope.info = angular.copy(formInfo);
-        
-        // Call Ajax
-        insertPersonAjax.insertPerson(angular.copy($scope.info)).then(function(result) {
-        // Do something with boolean result
-        });
-    };
-    
+stugovControllers.controller("insertPersonCtr", ['$scope', 'insertPersonAjax',
+    function ($scope, insertPersonAjax) {
+
+        // Function to be called when user submits form
+        $scope.update = function (formInfo) {
+
+            // Copy form data 
+            $scope.info = angular.copy(formInfo);
+
+            // Call Ajax
+            insertPersonAjax.insertPerson(angular.copy($scope.info)).then(function (result) {
+                // Do something with boolean result
+            });
+        };
+
 }]);

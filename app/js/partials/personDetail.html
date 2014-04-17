@@ -4,14 +4,49 @@
 
     <h3>{{ info.first_name }} {{ info.last_name }}'s Information:</h3>
 
-    <p><Strong>Banner ID: </Strong>{{ info.banner }}</p>
-
-    <p><strong>Unexcused Absences: </strong>{{ info.unexcused_total }}</p>
-
-    <p><strong>Excused Absences: </strong>{{ info.excused_total }}</p>
-
-    <p><strong>Date Joined: </strong>{{ info.date_joined }}</p>
-
-    <p><strong>Phone: </strong>{{ info.phone }}</p>
+    <table>
+        <tr>
+            <th>First Name:</td>
+                <td>
+                    <input type="text" ng-model="info.first_name" placeholder="info.first_name" />
+                </td>
+        </tr>
+        <tr>
+            <th>Last Name:</td>
+                <td>
+                    <input type="text" ng-model="info.last_name" placeholder="info.last_name" />
+                </td>
+        </tr>
+        <tr>
+            <th>Banner:</td>
+                <td>
+                    <input type="text" ng-model="info.banner" placeholder="info.banner" />
+                </td>
+        </tr>
+        <tr>
+            <th>Phone</td>
+                <td>
+                    <input type="text" ng-model="info.phone" placeholder="info.phone" />
+                </td>
+        </tr>
+        <tr>
+            <th>Date Joined:</td>
+                <td>
+                    <input type="text" ng-model="info.date_joined" placeholder="info.date_joined" />
+                </td>
+        </tr>
+        <tr>
+            <th>Unexcused Total:</td>
+                <td>
+                    <input type="text" ng-model="info.unexcused_total" placeholder="info.excused_total" />
+                </td>
+        </tr>
+        <tr>
+            <th>Excused Total:</td>
+                <td>
+                    <input type="text" ng-model="info.excused_total" placeholder="info.excused_total" />
+                </td>
+        </tr>
+    </table>
     
 </div>
