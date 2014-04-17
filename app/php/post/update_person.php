@@ -2,23 +2,10 @@
 
 /*
  * Author: Sean Hellebusch
- * Date: 4.12.14
+ * Date: 4.15.14
  * PHP backend to update a person into the DB
  */
 
-/*
- * This is the format of the JSON object.
- *
- *    {
- *     "username": "abc1234",
- *     "banner": "123456789",
- *     "phone": "132-456-7890"
- *     "date_joined: "mm/dd/yyyy",
- *     "first_name": "John",
- *     "last_name": "Doe"},
- *     "p_id: "######"
- *  ]}
- */
 try {
     // Decode JSON object
     $person_data = json_decode(file_get_contents("php://input"), TRUE);
@@ -72,6 +59,4 @@ try {
         echo 'error: ' . $e->getMessage();   
         
     }
-
-
 ?>
