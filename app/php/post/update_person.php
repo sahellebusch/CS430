@@ -19,30 +19,47 @@
  *     "p_id: "######"
  *  ]}
  */
-
 try {
     // Decode JSON object
     $person_data = json_decode(file_get_contents("php://input"), TRUE);
     echo var_dump($person_data);
+    
     // Database login
     $dbuser = 'jpf7324';
     $dbpass = 'oxaetoht';
+    
     // Connect to DB
     $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Prepare Statement
-    $stmt = $db->prepare("UPDATE person SET username = :username, banner = :banner, phone = :phone, date_joined = :date_joined,                         first_name = :first_name, last_name = :last_name, WHERE p_id = :p_id 
-        VALUES (:p_id, :username, :banner, :phone, :date_joined, :first_name, :last_name)");
-    // Convert date joined to SQL format
-    $date_joined_SQL_format = date('Y-m-d', strtotime(str_replace('-', '/', $person_data[3]['date_joined'])));
+    $stmt = $db->prepare("UPDATE person SET username = :username, banner = :banner, phone = :phone, date_joined = :date_joined,                                 first_name = :first_name, last_name = :last_name WHERE p_id = :p_id");
+    
+    // Decode and convert necessary vars to correct type
+    $person_data = json_decode(file_get_contents("php://input"), TRUE);
+    $pid = (int) $person_data['p_id'];
+    $banner = (int) $person_data['banner'];
+    $phone = (int) $person_data['phone'];
+    $unexcused_total = (int) $person_data['unexcused_total'];
+    $excused_total = (int) $person_data['excused_total'];    
+    
+    // Check to see if date is in correct format, bind.
+    // If not, convert to correct format and bind.
+    $date_joined = $person_data['date_joined'];
+    echo var_dump($date_joined);
+    if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date_joined)){ 
+    }else{ 
+        $date_joined = date('Y-m-d', strtotime(str_replace('-', '/', $date_joined)));
+    }
+    
     // Bind values
-    $stmt->bindValue(':username', $person_data[0]['username']);
-    $stmt->bindValue(':banner', $person_data[1]['banner']);
-    $stmt->bindValue(':phone', $person_data[2]['phone']);
-    $stmt->bindValue(':date_joined', $date_joined_SQL_format);
-    $stmt->bindValue(':first_name', $person_data[4]['first_name']);
-    $stmt->bindValue(':last_name', $person_data[5]['last_name']);
-    $stmt->bindValue(':p_id', $person_data[6]['p_id']);
+    $stmt->bindValue(':banner', $banner);
+    $stmt->bindValue(':phone', $phone);
+    $stmt->bindValue(':p_id', $pid);
+    $stmt->bindValue(':username', $person_data['username']);
+    $stmt->bindValue(':first_name', $person_data['first_name']);
+    $stmt->bindValue(':last_name', $person_data['last_name']);
+    $stmt->bindValue(':date_joined', $date_joined);
+    
     // Execute SQL
     $stmt->execute();
     // Report Success

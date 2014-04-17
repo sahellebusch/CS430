@@ -22,6 +22,7 @@
 try {
     // Decode JSON object
     $person_data = json_decode(file_get_contents("php://input"), TRUE);
+    echo var_dump($person_data);
     // Database login
     $dbuser = 'jpf7324';
     $dbpass = 'oxaetoht';
