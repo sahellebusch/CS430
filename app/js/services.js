@@ -91,7 +91,6 @@ stugovApp.factory('updatePersonAjax', function ($http) {
             // PHP file that AJAX is calling
             var url = 'app/php/post/update_person.php';
 
-            console.log(info);
             // Return results up the line
             return $http.post(url, info);
 
