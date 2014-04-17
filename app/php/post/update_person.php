@@ -35,14 +35,14 @@ try {
         if(validateDate($date_joined)) {
         } else {
             echo false;
-            exit ("Invalid date");
+            die;
         }
     } else {
         $date_joined = date('Y-m-d', strtotime(str_replace('-', '/', $date_joined)));
         if(validateDate($date_joined)){
         } else {
             echo false;
-            exit ("Invalid date");
+            die;
         }
     }
     
