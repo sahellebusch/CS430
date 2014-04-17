@@ -2,20 +2,16 @@
     
     <a class="btn" href="#/person/edit/{{ info.p_id }}">Change {{ info.first_name }}'s Information</a>
 
-    <h3>{{ info.first_name }}'s Information:</h3>
+    <h3>{{ info.first_name }} {{ info.last_name }}'s Information:</h3>
 
-    <p>{{ info.first_name }}</p>
+    <p><Strong>Banner ID: </Strong>{{ info.banner }}</p>
 
-    <p>{{ info.last_name }}</p>
+    <p><strong>Unexcused Absences: </strong>{{ info.unexcused_total }}</p>
 
-    <p>{{ info.banner }}</p>
+    <p><strong>Excused Absences: </strong>{{ info.excused_total }}</p>
 
-    <p>{{ info.unexcused_total }}</p>
+    <p><strong>Date Joined: </strong>{{ info.date_joined }}</p>
 
-    <p>{{ info.excused_total }}</p>
-
-    <p>{{ info.date_joined }}</p>
-
-    <p>{{ info.phone }}</p>
-
+    <p><strong>Phone: </strong>{{ info.phone }}</p>
+    
 </div>

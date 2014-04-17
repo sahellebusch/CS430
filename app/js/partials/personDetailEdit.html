@@ -2,46 +2,78 @@
 
     <h3>Change {{ old.first_name }}'s Information:</h3>
 
-    <form role="form">
-        First Name:
-        <input type="text" ng-model="info.first_name" placeholder="info.first_name" />
-        <br />Last Name:
-        <input type="text" ng-model="info.last_name" placeholder="info.last_name" />
-        <br />Banner:
-        <input type="text" ng-model="info.banner" placeholder="info.banner" />
-        <br />Unexcused Total:
-        <input type="text" ng-model="info.unexcused_total" placeholder="info.unexcused_total" />
-        <br />Excused Total:
-        <input type="text" ng-model="info.excused_total" placeholder="info.excused_total" />
-        <br />Date Joined:
-        <input type="text" ng-model="info.date_joined" placeholder="info.date_joined" />
-        <br />Phone:
-        <input type="text" ng-model="info.phone" placeholder="info.phone" />
-        <br />
+    <table>
+        <tr>
+            <th>First Name:</td>
+                <td>
+                    <input type="text" ng-model="info.first_name" placeholder="info.first_name" />
+                </td>
+        </tr>
+        <tr>
+            <th>Last Name:</td>
+                <td>
+                    <input type="text" ng-model="info.last_name" placeholder="info.last_name" />
+                </td>
+        </tr>
+        <tr>
+            <th>Banner:</td>
+                <td>
+                    <input type="text" ng-model="info.banner" placeholder="info.banner" />
+                </td>
+        </tr>
+        <tr>
+            <th>Phone</td>
+                <td>
+                    <input type="text" ng-model="info.phone" placeholder="info.phone" />
+                </td>
+        </tr>
+        <tr>
+            <th>Date Joined:</td>
+                <td>
+                    <input type="text" ng-model="info.date_joined" placeholder="info.date_joined" />
+                </td>
+        </tr>
+        <tr>
+            <th>Unexcused Total:</td>
+                <td>
+                    <input type="text" ng-model="info.excused_total" placeholder="info.excused_total" />
+                </td>
+        </tr>
+        <tr>
+            <th>Excused Total:</td>
+                <td>
+                    <input type="text" ng-model="info.excused_total" placeholder="info.excused_total" />
+                </td>
+        </tr>
+    </table>
+
+
+    <h3>Previous Information:</h3>
+    <p>
+        <strong>First Name:</strong>{{ old.first_name }}</p>
+
+    <p>
+        <strong>Last Name:</strong>{{ old.last_name }}</p>
+
+    <p>
+        <strong>Banner:</strong>{{ old.banner }}</p>
+
+    <p>
+        <strong>Unexcused Absences:</strong>{{ old.unexcused_total }}</p>
+
+    <p>
+        <strong>Excused Absences:</strong>{{ old.excused_total }}</p>
+
+    <p>
+        <strong>Date Joined:</strong>{{ old.date_joined }}</p>
+
+    <p>
+        <strong>Phone:</strong>{{ old.phone }}</p>
 
 
 
-        <h3>Previous Information:</h3>
+    <button type="submit" class="btn btn-default" ng-click="update(info)">Submit</button>
 
-        <p>{{ old.first_name }}</p>
-
-        <p>{{ old.last_name }}</p>
-
-        <p>{{ old.banner }}</p>
-
-        <p>{{ old.unexcused_total }}</p>
-
-        <p>{{ old.excused_total }}</p>
-
-        <p>{{ old.date_joined }}</p>
-
-        <p>{{ old.phone }}</p>
-
-
-
-        <button type="submit" class="btn btn-default" ng-click="update(info)">Submit</button>
-        
-        <pre>Master = {{ master }}</pre>
     </form>
 
 </div>
