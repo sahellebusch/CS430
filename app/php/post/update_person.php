@@ -22,7 +22,6 @@
 try {
     // Decode JSON object
     $person_data = json_decode(file_get_contents("php://input"), TRUE);
-    echo var_dump($person_data);
     
     // Database login
     $dbuser = 'jpf7324';
@@ -45,7 +44,6 @@ try {
     // Check to see if date is in correct format, bind.
     // If not, convert to correct format and bind.
     $date_joined = $person_data['date_joined'];
-    echo var_dump($date_joined);
     if(preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $date_joined)){ 
     }else{ 
         $date_joined = date('Y-m-d', strtotime(str_replace('-', '/', $date_joined)));
