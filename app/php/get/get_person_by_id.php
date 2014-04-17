@@ -16,10 +16,10 @@
     $pdo = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Prepare SQL Statement
-    $stmt = $pdo->prepare("SELECT * FROM person WHERE p_id = :p_id
-                         VALUES (:p_id)");
+    $stmt = $pdo->prepare("SELECT first_name, last_name, username, banner, phone, date_joined, unexcused_total, excused_total 
+        FROM person WHERE p_id = :p_id");
     // Bind Values
-    $stmt->bindValue(':p_id', $person_id[0]['p_id']);
+    $stmt->bindValue(':p_id', $person_id['p_id']);
     // Execute SQL Statement
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
