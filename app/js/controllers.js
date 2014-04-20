@@ -138,8 +138,8 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
 // Controller to insert a new person
 // Params/Dependencies: $scope
 // Services: insertPersonAjax
-stugovControllers.controller("insertPersonCtr", ['$scope', 'insertPersonAjax', '$location',
-    function ($scope, $location, insertPersonAjax) {
+stugovControllers.controller("insertPersonCtr", ['$scope','$location', 'insertPersonAjax',
+    function ($scope, insertPersonAjax, $location) {
 
         $scope.person = {};
         
@@ -147,15 +147,7 @@ stugovControllers.controller("insertPersonCtr", ['$scope', 'insertPersonAjax', '
         $scope.update = function (info) {
 
             // Call Ajax
-            insertPersonAjax.insertPerson(info).then(function (result) {
-
-                if (result.data) {
-                    $location.path('/person/editsuccess');
-                } else {
-                    $location.path('/person.editfailure');
-                }
-
-            });
+            insertPersonAjax.insertPerson(info);
         };
 
 }]);
