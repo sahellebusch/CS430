@@ -133,21 +133,19 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
         };
 }]);
 
-// Name: insertPersonCtr
-// Last Modified: 4.17.14
-// Controller to insert a new person
-// Params/Dependencies: $scope
-// Services: insertPersonAjax
-stugovControllers.controller("insertPersonCtr", ['$scope','$location', 'insertPersonAjax',
-    function ($scope, insertPersonAjax, $location) {
+// Name: personDetailEditCtr
+// Last Modified: 4.15.14
+// Controller to edit a specific person
+// Params/Dependencies: $scope, $http
+// Services: personDetailAjax
+stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$location', 'insertPersonAjax',
+    function ($scope, $routeParams, $location, insertPersonAjax) {
 
-        $scope.person = {};
-        
-        // Function to be called when user submits form
+        // Activation on button click to update person information
         $scope.update = function (info) {
 
-            // Call Ajax
-            insertPersonAjax.insertPerson(info);
+            // Send new data to Ajax
+            insertPersonAjax.insertPerson(angular.copy(info));
+            
         };
-
 }]);
