@@ -92,7 +92,7 @@ stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'pers
 }]);
 
 // Name: personDetailEditCtr
-// Last Modified: 4.15.14
+// Last Modified: 4.21.14
 // Controller to edit a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
@@ -123,7 +123,7 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
             // Send new data to Ajax
             updatePersonAjax.updatePerson(angular.copy(info)).then(function (result) {
                 console.log(result.data);
-                if (result.data) {
+                if (result.data == '1') {
                     $location.path('/person/editsuccess');
                 } else {
                     $location.path('/person/editfailure');
@@ -134,7 +134,7 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
 }]);
 
 // Name: personInsertCtr
-// Last Modified: 4.15.14
+// Last Modified: 4.21.14
 // Controller to edit a specific person
 // Params/Dependencies: $scope, $http
 // Services: personInsertAjax
@@ -145,7 +145,14 @@ stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$loc
         $scope.update = function (info) {
 
             // Send new data to Ajax
-            insertPersonAjax.insertPerson(angular.copy(info));
+            insertPersonAjax.insertPerson(angular.copy(info)).then(function (result) {
+                console.log(result.data);
+                if (result.data == '1') {
+                    $location.path('/person/editsuccess');
+                } else {
+                    $location.path('/person/editfailure');
+                }
+            });
             
         };
 }]);
