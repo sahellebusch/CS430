@@ -133,11 +133,11 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
         };
 }]);
 
-// Name: personDetailEditCtr
+// Name: personInsertCtr
 // Last Modified: 4.15.14
 // Controller to edit a specific person
 // Params/Dependencies: $scope, $http
-// Services: personDetailAjax
+// Services: personInsertAjax
 stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$location', 'insertPersonAjax',
     function ($scope, $routeParams, $location, insertPersonAjax) {
 
