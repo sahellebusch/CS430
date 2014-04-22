@@ -74,20 +74,17 @@ stugovControllers.controller("meetingCtr", ['$scope', 'addPersonAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax',
-    function ($scope, $routeParams, personAjax) {
+stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personDetailAjax',
+    function ($scope, $routeParams, personDetailAjax) {
 
         // Capture the person from the URL from previous page
         $scope.pid = $routeParams.pid;
+        console.log($scope.pid);
 
         // Call the service personDetailAjax and then use the returned
         // data to build the person object
-        personAjax.getPerson().then(function (result) {
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].p_id == $scope.pid) {
-                    $scope.info = result.data[i];
-                }
-            }
+        personDetailAjax.getPerson($scope.pid).then(function (result) {
+                $scope.info = result.data;
         });
 }]);
 

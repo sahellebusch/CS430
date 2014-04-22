@@ -43,10 +43,10 @@ stugovApp.factory('personDetailAjax', function ($http) {
         getPerson: function () {
 
             // PHP file that AJAX is calling
-            var url = 'app/json/mockperson.json';
+            var url = 'app/php/get/get_person_by_id.php';
 
             // Return results up the line
-            return $http.get(url);
+            return $http.post(url, pid);
 
         }
 
