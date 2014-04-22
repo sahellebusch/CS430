@@ -24,7 +24,7 @@ if(validateDate($meeting_date) {
     
     // Prepare SQL 
     $stmt = $pdo->prepare("SELECT last_name, first_name, date, present FROM person, event, attendance_event 
-        WHERE person.p_id = attendance_event.p_id AND attendance_event.e_id = event.e_id AND date = :meeting_date");
+        WHERE person.p_id = attendance_event.p_id AND attendance_event.e_id = event.e_id AND date = :meeting_date GROUP BY last_name");
     
     // Bind meeting date
     $stmt->bindValue(':meeting_date', $meeting_date);
