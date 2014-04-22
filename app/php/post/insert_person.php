@@ -34,7 +34,7 @@ $username        = $person_data['username'];
             $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) 
                  VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
             
-             // Bind values (convert any if necessary)
+            // Bind values (convert any if necessary)
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':banner', (int)$banner);
             $stmt->bindValue(':phone', $phone);
