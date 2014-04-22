@@ -98,3 +98,28 @@ stugovApp.factory('updatePersonAjax', function ($http) {
 
     };
 });
+
+// Factory that gives info to php to insert a new meeting
+// Name: insertMeetingAjax
+// Last Modified: 4.15.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('insertMeetingAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        insertMeeting: function (type, date) {
+
+            var info = [{"type":type, "date":date}];
+            
+            // PHP file that AJAX is calling
+            var url = 'app/php/post/insert_meeting.php';
+
+            // Return results up the line
+            return $http.post(url, info);
+
+        }
+
+    };
+});

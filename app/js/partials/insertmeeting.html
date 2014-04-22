@@ -1,0 +1,16 @@
+<div>
+
+    <select ng-model="type">
+        <option value="General">General Meeting</option>
+        <option value="Student Affairs">Student Affairs</option>
+        <option value="External Affairs">External Affairs</option>
+        <option value="Academic Affairs">Academic Affairs</option>
+        <option value="Grants and Sponsorships">Grants and Sponsorships</option>
+    </select>
+    
+    <span>Date: <input type="date" ng-model="date"></span>
+
+    <button ng-click="send(type, date)"></button>
+
+
+</div>

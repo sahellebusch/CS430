@@ -156,3 +156,27 @@ stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$loc
             
         };
 }]);
+
+// Name: insertMeetingCtr
+// Last Modified: 4.22.14
+// Controller to insert a new meeting
+// Params/Dependencies: $scope
+// Services: insertMeetingAjax
+stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insertMeetingAjax',
+    function ($scope, $location, insertMeetingAjax) {
+
+        // Activation on button click to update person information
+        $scope.send = function (type, date) {
+
+            // Send new data to Ajax
+            insertMeetingAjax.insertMeeting(angular.copy(type), angular.copy(date)).then(function (result) {
+                console.log(result.data);
+                if (result.data == '1') {
+                    $location.path('/person/editsuccess');
+                } else {
+                    $location.path('/person/editfailure');
+                }
+            });
+            
+        };
+}]);
