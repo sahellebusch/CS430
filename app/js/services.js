@@ -137,7 +137,7 @@ stugovApp.factory('meetingsAjax', function ($http) {
         getMeetings: function () {
             
             // PHP file that AJAX is calling
-            var url = 'app/php/post/get_meeting.php';
+            var url = 'app/php/get/get_meetings.php';
 
             // Return results up the line
             return $http.post(url);
