@@ -8,13 +8,13 @@
     
 // Decode JSON object, exit if NULL
 $meeting_data = json_decode(file_get_contents("php://input"), TRUE);
-if($person_data == NULL) {
+if(!empty($person_data)) {
     exit("null json object passed");
 }
 
 // Unpack JSON object
-$meeting_date = $meeting_data['date'];
-$meeting_type = $meeting_data['type'];
+$meeting_date = $meeting_data[0]["date"];
+$meeting_type = $meeting_data[0]["type"];
 
 if(validateDate($meeting_date)) {
     try {
@@ -31,7 +31,7 @@ if(validateDate($meeting_date)) {
          VALUES (:meeting_date, :meeting_type)");
         
         // Bind values (convert any if necessary)
-        $stmt->bindValue(':meeting_type', $meeting_date);
+        $stmt->bindValue(':meeting_date', $meeting_date);
         $stmt->bindValue(':meeting_type', $meeting_type);
         
         // Execute and report success
@@ -46,6 +46,7 @@ if(validateDate($meeting_date)) {
         // Report error
         echo 'error: ' . $e->getMessage();
         
+    }
 } else {
     $failure = FALSE;
     echo $failure;
