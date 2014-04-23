@@ -4,12 +4,11 @@
     
     <h1>View Meetings</h1>
 
-    <select ng-model="type">
-        <option value="regular">Regular</option>
-        <option value="committee">Meeting</option>
-    </select>
+    <br />
 
-    {{ type }} {{ master }}
+    <ul ng-repeat="person in persons | filter:searchtext">
+        
+            <a href="#/meeting/{{ meeting.m_id }}" class='btn'>{{ person.first_name }} {{ person.last_name }}</a>
 
-    <button ng-click="update(type)"></button>
+    </ul>
 </div>
