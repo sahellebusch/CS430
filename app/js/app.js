@@ -48,9 +48,13 @@ stugovApp.config(['$routeProvider',
                 templateUrl: 'app/js/partials/meeting.html',
                 controller: 'meetingCtr'
             })
-            .when('/meetings/:mid', {
+            .when('/meetings/edit/:mid', {
                     templateUrl: 'app/js/partials/meetingDetailEdit.html',
                     controller: 'meetingDetailEditCtr'
+            })
+            .when('/meetings/:mid', {
+                    templateUrl: 'app/js/partials/meetingDetail.html',
+                    controller: 'meetingDetailCtr'
             })
             .when('/insertmeeting', {
                 templateUrl: 'app/js/partials/insertmeeting.html',

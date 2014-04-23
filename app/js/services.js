@@ -7,6 +7,11 @@ Written to access senators from the database backend
 
 /* global stugovApp, console*/
 
+
+
+//*****************************************PERSON************************************
+
+
 // Factory that uses $http dependency
 // Name: personAjax
 // Last Modified: 4.9.14
@@ -99,6 +104,9 @@ stugovApp.factory('updatePersonAjax', function ($http) {
     };
 });
 
+//*************************************MEETING*************************************
+
+
 // Factory that gives info to php to insert a new meeting
 // Name: insertMeetingAjax
 // Last Modified: 4.15.14
@@ -141,6 +149,29 @@ stugovApp.factory('meetingsAjax', function ($http) {
 
             // Return results up the line
             return $http.post(url);
+
+        }
+
+    };
+});
+
+// Factory that gives info to php to update meeting
+// Name: updateMeetingAjax
+// Last Modified: 4.23.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('updateMeetingAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        updateMeeting: function (info) {
+
+            // PHP file that AJAX is calling
+            var url = 'app/php/post/update_meeting.php';
+
+            // Return results up the line
+            return $http.post(url, info);
 
         }
 

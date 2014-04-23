@@ -1,0 +1,37 @@
+<div>
+
+    <h3>Change {{ old.first_name }}'s Information:</h3>
+
+    <table>
+        <tr>
+            <th>First Name:</td>
+                <td>
+                    <input type="text" ng-model="info.first_name" placeholder="info.first_name" />
+                </td>
+        </tr>
+        <tr>
+            <th>Last Name:</td>
+                <td>
+                    <input type="text" ng-model="info.last_name" placeholder="info.last_name" />
+                </td>
+        </tr>
+    </table>
+
+
+    <h3>Previous Information:</h3>
+    <p>
+        <strong>First Name:</strong>{{ old.first_name }}</p>
+
+    <p>
+        <strong>Last Name:</strong>{{ old.last_name }}</p>
+
+    <p>
+        <strong>Banner:</strong>{{ old.banner }}</p>
+
+
+
+    <button type="submit" class="btn btn-default" ng-click="update(info)">Submit</button>
+
+    </form>
+
+</div>

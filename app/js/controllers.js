@@ -19,6 +19,9 @@ stugovControllers.controller("frontCtr", ['$scope',
 
 }]);
 
+
+// *******************************PERSON************************************
+
 // Name: personCtr
 // Last Modified: 4.9.14
 // Controller for the person page
@@ -32,22 +35,6 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
         personAjax.getPerson().then(function (result) {
             $scope.persons = result.data;
         });
-}]);
-
-// Name: meetingCtr
-// Last Modified: 4.9.14
-// Controller for the person page
-// Params/Dependencies: $scope
-// Services: personAjax
-stugovControllers.controller("meetingCtr", ['$scope', 'meetingsAjax', 
-    function ($scope, meetingsAjax) {
-
-        // Call the service meetingsAjax and then use the returned
-        // data to build the person object
-        meetingsAjax.getMeetings().then(function (result) {
-            $scope.meetings = result.data;
-        });
-
 }]);
 
 // Name: personDetailCtr
@@ -138,6 +125,24 @@ stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$loc
         };
 }]);
 
+// ******************************MEETING*************************************
+
+// Name: meetingCtr
+// Last Modified: 4.9.14
+// Controller for the person page
+// Params/Dependencies: $scope
+// Services: personAjax
+stugovControllers.controller("meetingCtr", ['$scope', 'meetingsAjax', 
+    function ($scope, meetingsAjax) {
+
+        // Call the service meetingsAjax and then use the returned
+        // data to build the person object
+        meetingsAjax.getMeetings().then(function (result) {
+            $scope.meetings = result.data;
+        });
+
+}]);
+
 // Name: insertMeetingCtr
 // Last Modified: 4.22.14
 // Controller to insert a new meeting
@@ -146,7 +151,7 @@ stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$loc
 stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insertMeetingAjax',
     function ($scope, $location, insertMeetingAjax) {
 
-        // Activation on button click to update person information
+        // Activation on button click to update meeting information
         $scope.send = function (type, date) {
 
             // Send new data to Ajax
@@ -159,5 +164,69 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
                 }
             });
             
+        };
+}]);
+
+// Name: meetingDetailCtr
+// Last Modified: 4.23.14
+// Controller for a specific meeting
+// Params/Dependencies: $scope, $http
+// Services: meetingDetailAjax
+stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'meetingsAjax',
+    function ($scope, $routeParams, meetingsAjax) {
+
+        // Capture the meeting from the URL from previous page
+        $scope.mid = $routeParams.mid;
+
+        // Call the service meetingDetailAjax and then use the returned
+        // data to build the meeting object
+        meetingsAjax.getMeetings().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].m_id == $scope.mid) {
+                    $scope.info = result.data[i];
+                }
+            }
+        });
+}]);
+
+// Name: meetingDetailEditCtr
+// Last Modified: 4.21.14
+// Controller to edit a specific person
+// Params/Dependencies: $scope, $http
+// Services: personDetailAjax
+stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', '$location', 'meetingAjax', 'updateMeetingAjax',
+    function ($scope, $routeParams, $location, meetingAjax, updateMeetingAjax) {
+
+        // Capture the meeting from the URL from previous page
+        $scope.mid = $routeParams.mid;
+
+        // Capture old data so that it's not updated while the user
+        // changes information on the view
+        $scope.old = $scope.info;
+
+        // Call the service meetingDetailAjax and then use the returned
+        // data to build the meeting object
+        meetingAjax.getMeeting().then(function (result) {
+            for (var i = 0; i < result.data.length; i++) {
+                if (result.data[i].m_id == $scope.mid) {
+                    $scope.info = result.data[i];
+                    $scope.old = angular.copy($scope.info);
+                }
+            }
+        });
+
+        // Activation on button click to update meeting information
+        $scope.update = function (info) {
+
+            // Send new data to Ajax
+            updateMeetingAjax.updateMeeting(angular.copy(info)).then(function (result) {
+                console.log(result.data);
+                if (result.data == '1') {
+                    $location.path('/person/editsuccess');
+                } else {
+                    $location.path('/person/editfailure');
+                }
+
+            });
         };
 }]);
