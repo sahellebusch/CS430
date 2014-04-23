@@ -15,7 +15,7 @@
     $pdo = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $pdo->prepare("SELECT date FROM  `meeting` GROUP BY DATE LIMIT 0 , 15");
+    $stmt = $pdo->prepare("SELECT * FROM  `meeting` GROUP BY DATE LIMIT 0 , 15");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $json = json_encode($result);
