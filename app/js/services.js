@@ -123,3 +123,26 @@ stugovApp.factory('insertMeetingAjax', function ($http) {
 
     };
 });
+
+// Factory that gives the meetings from the db
+// Name: meetingsAjax
+// Last Modified: 4.23.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('meetingsAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        getMeetings: function () {
+            
+            // PHP file that AJAX is calling
+            var url = 'app/php/post/get_meeting.php';
+
+            // Return results up the line
+            return $http.post(url);
+
+        }
+
+    };
+});

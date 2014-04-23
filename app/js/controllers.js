@@ -12,14 +12,10 @@ var stugovControllers = angular.module("stugovControllers", []);
 // Name: indexCtr
 // Last Modified: 4.9.14
 // Controller for the front (index) page
-stugovControllers.controller("frontCtr", ['$scope', 'meetingsAjax', 
-    function ($scope, meetingsAjax) {
+stugovControllers.controller("frontCtr", ['$scope',
+    function ($scope) {
 
-        // Call the service personAjax and then use the returned
-        // data to build the person object
-        meetingsAjax.getMeetings().then(function (result) {
-            $scope.meetings = result.data;
-        });
+        // Empty
 
 }]);
 
@@ -43,10 +39,14 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
 // Controller for the person page
 // Params/Dependencies: $scope
 // Services: personAjax
-stugovControllers.controller("meetingCtr", ['$scope',
-    function ($scope) {
+stugovControllers.controller("meetingCtr", ['$scope', 'meetingsAjax', 
+    function ($scope, meetingsAjax) {
 
-        //Empty Controller
+        // Call the service meetingsAjax and then use the returned
+        // data to build the person object
+        meetingsAjax.getMeetings().then(function (result) {
+            $scope.meetings = result.data;
+        });
 
 }]);
 
