@@ -8,7 +8,7 @@
     
 // Decode JSON object, exit if NULL
 $meeting_data = json_decode(file_get_contents("php://input"), TRUE);
-if(!empty($person_data)) {
+if(empty($person_data)) {
     exit("null json object passed");
 }
 
