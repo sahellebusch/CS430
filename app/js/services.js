@@ -184,6 +184,7 @@ stugovApp.factory('updateMeetingAjax', function ($http) {
 //*****************************ATTENDANCE*******************************
 
 
+
 // Factory that gives attendance for a meeting
 // Name: meetingAttendanceAjax
 // Last Modified: 4.24.14
@@ -197,7 +198,7 @@ stugovApp.factory('meetingAttendanceAjax', function ($http) {
         getMeetingAttendance: function (mid) {
 
             // PHP file that AJAX is calling
-            var url = 'app/php/post/get_meeting_attendance.php';
+            var url = 'app/php/get/get_meeting_attendance.php';
 
             // Return results up the line
             return $http.post(url, mid);
