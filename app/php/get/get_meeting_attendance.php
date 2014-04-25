@@ -3,7 +3,8 @@
 /*
  * Author: Sean Hellebusch
  * Date: 4.24.14
- * PHP backend to retrieve a meeting's attendence record by specific date
+ * PHP backend to retrieve a meeting's 
+ * attendence record by specific meeting id
  */
 
 // Decode JSON object, exit if NULL
