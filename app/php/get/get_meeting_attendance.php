@@ -7,7 +7,6 @@
  */
 
 // Decode JSON object, exit if NULL
-
 $m_id = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($m_id)) {
     exit("null json object passed");
@@ -23,7 +22,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // Prepare SQL 
-    $stmt = $pdo->prepare("SELECT last_name, first_name, present FROM person, m_idg 
+    $stmt = $pdo->prepare("SELECT last_name, first_name, present FROM person, m_id 
 WHERE person.p_id = attendance_meeting.p_id AND attendance_meeting.m_id = :m_id");
     
     // Bind meeting date
