@@ -7,6 +7,7 @@
  */
 
 // Decode JSON object, exit if NULL
+
 $m_id = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($m_id)) {
     exit("null json object passed");

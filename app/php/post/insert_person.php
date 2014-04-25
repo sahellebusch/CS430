@@ -8,7 +8,7 @@
 
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
-if($person_data == NULL) {
+if(empty($person_data)) {
     exit("null json object passed");
 }
 
