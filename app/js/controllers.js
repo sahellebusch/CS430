@@ -148,8 +148,14 @@ stugovControllers.controller("meetingCtr", ['$scope', 'meetingsAjax',
 // Controller to insert a new meeting
 // Params/Dependencies: $scope
 // Services: insertMeetingAjax
-stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insertMeetingAjax',
-    function ($scope, $location, insertMeetingAjax) {
+stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insertMeetingAjax', 'personAjax',
+    function ($scope, $location, insertMeetingAjax, personAjax) {
+
+        // Call the service personAjax and then use the returned
+        // data to build the person object
+        personAjax.getPerson().then(function (result) {
+            $scope.persons = result.data;
+        });
 
         // Activation on button click to update meeting information
         $scope.send = function (type, date) {
@@ -163,8 +169,6 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
                     $location.path('#/editfailure');
                 }
             });
-            
-            
 
         };
 }]);
@@ -192,11 +196,11 @@ stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'mee
 
             }
         });
-        
+
         meetingAttendanceAjax.getMeetingAttendance($scope.mid)
-        .then( function (result) {
-              $scope.attendance = result.data; 
-        });
+            .then(function (result) {
+                $scope.attendance = result.data;
+            });
 
 }]);
 

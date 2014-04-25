@@ -12,7 +12,15 @@
         <input type="text" ng-model="date">
     </span>
     
-    <span ng-repeat=''></span>
+    <table>
+    <tr ng-repeat='person in persons'>
+        <th>{{ person.first_name }} {{ person.last_name }}</th>
+         <td><select ng-model="present">
+                        <option value="1">Present</option>
+                        <option value="0">Not Present</option>
+                    </select></td>
+    </tr>
+    </table>
 
     <button ng-click="send(type, date)">Submit</button>
 
