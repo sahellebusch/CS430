@@ -181,12 +181,16 @@ stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'mee
         // Call the service meetingDetailAjax and then use the returned
         // data to build the meeting object
         meetingsAjax.getMeetings().then(function (result) {
+            
             for (var i = 0; i < result.data.length; i++) {
+                
                 if (result.data[i].m_id == $scope.mid) {
                     $scope.info = result.data[i];
                 }
+                
             }
         });
+
 }]);
 
 // Name: meetingDetailEditCtr
