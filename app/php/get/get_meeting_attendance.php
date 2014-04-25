@@ -22,8 +22,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     // Prepare SQL 
-    $stmt = $pdo->prepare("SELECT last_name, first_name, present FROM person, m_id 
-WHERE person.p_id = attendance_meeting.p_id AND attendance_meeting.m_id = :m_id");
+    $stmt = $pdo->prepare("SELECT last_name, first_name, present FROM person, attendance_meeting WHERE person.p_id = attendance_meeting.p_id AND attendance_meeting.m_id = :m_id");
     
     // Bind meeting date
     $stmt->bindValue(':m_id', $m_id);
