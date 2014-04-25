@@ -163,6 +163,8 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
                     $location.path('#/editfailure');
                 }
             });
+            
+            
 
         };
 }]);
