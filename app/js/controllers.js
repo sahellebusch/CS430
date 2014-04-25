@@ -92,9 +92,9 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
             updatePersonAjax.updatePerson(angular.copy(info)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('/person/editsuccess');
+                    $location.path('#/editsuccess');
                 } else {
-                    $location.path('/person/editfailure');
+                    $location.path('#/editfailure');
                 }
 
             });
@@ -158,9 +158,9 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
             insertMeetingAjax.insertMeeting(angular.copy(type), angular.copy(date)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('/person/editsuccess');
+                    $location.path('#/editsuccess');
                 } else {
-                    $location.path('/person/editfailure');
+                    $location.path('#/editfailure');
                 }
             });
             
@@ -198,8 +198,8 @@ stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'mee
 // Controller to edit a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', '$location', 'meetingAjax', 'updateMeetingAjax',
-    function ($scope, $routeParams, $location, meetingAjax, updateMeetingAjax) {
+stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', '$location', 'meetingsAjax', 'updateMeetingAjax',
+    function ($scope, $routeParams, $location, meetingsAjax, updateMeetingAjax) {
 
         // Capture the meeting from the URL from previous page
         $scope.mid = $routeParams.mid;
@@ -210,7 +210,7 @@ stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', 
 
         // Call the service meetingDetailAjax and then use the returned
         // data to build the meeting object
-        meetingAjax.getMeeting().then(function (result) {
+        meetingsAjax.getMeetings().then(function (result) {
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].m_id == $scope.mid) {
                     $scope.info = result.data[i];
@@ -226,9 +226,9 @@ stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', 
             updateMeetingAjax.updateMeeting(angular.copy(info)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('/person/editsuccess');
+                    $location.path('#/editsuccess');
                 } else {
-                    $location.path('/person/editfailure');
+                    $location.path('#/editfailure');
                 }
 
             });

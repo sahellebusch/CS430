@@ -24,11 +24,11 @@ stugovApp.config(['$routeProvider',
                 templateUrl: 'app/js/partials/person.html',
                 controller: 'personCtr'
             })
-            .when('/person/editsuccess', {
+            .when('/editsuccess', {
                 templateUrl: 'app/js/partials/editsuccess.html',
                 controller: 'frontCtr'
             })
-            .when('/person/editfailure', {
+            .when('/editfailure', {
                 templateUrl: 'app/js/partials/editfailure.html',
                 controller: 'frontCtr'
             })

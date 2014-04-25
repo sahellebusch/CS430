@@ -6,13 +6,13 @@
         <tr>
             <th>Meeting Type:</td>
                 <td>
-                    <span>{{ info.first_name }}</span>
+                    <input type="text" ng-model="info.type" placeholder="info.type" />
                 </td>
         </tr>
         <tr>
             <th>Meeting Date:</td>
                 <td>
-                    <span>{{ info.last_name }}</span>
+                    <input type="text" ng-model="info.date" placeholder="info.date" />
                 </td>
         </tr>
         
@@ -21,13 +21,10 @@
 
     <h3>Previous Information:</h3>
     <p>
-        <strong>First Name:</strong>{{ old.first_name }}</p>
+        <strong>Meeting Type:</strong>{{ old.type }}</p>
 
     <p>
-        <strong>Last Name:</strong>{{ old.last_name }}</p>
-
-    <p>
-        <strong>Banner:</strong>{{ old.banner }}</p>
+        <strong>Meeting Date:</strong>{{ old.date }}</p>
 
 
 
