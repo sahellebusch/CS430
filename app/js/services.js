@@ -180,3 +180,29 @@ stugovApp.factory('updateMeetingAjax', function ($http) {
 
     };
 });
+
+//*****************************ATTENDANCE*******************************
+
+
+// Factory that gives attendance for a meeting
+// Name: meetingAttendanceAjax
+// Last Modified: 4.24.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('meetingAttendanceAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        getMeetingAttendance: function (mid) {
+
+            // PHP file that AJAX is calling
+            var url = 'app/php/post/get_meeting_attendance.php';
+
+            // Return results up the line
+            return $http.post(url, mid);
+
+        }
+
+    };
+});

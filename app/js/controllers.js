@@ -172,8 +172,8 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
 // Controller for a specific meeting
 // Params/Dependencies: $scope, $http
 // Services: meetingDetailAjax
-stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'meetingsAjax',
-    function ($scope, $routeParams, meetingsAjax) {
+stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'meetingsAjax', 'meetingAttendanceAjax',
+    function ($scope, $routeParams, meetingsAjax, meetingAttendanceAjax) {
 
         // Capture the meeting from the URL from previous page
         $scope.mid = $routeParams.mid;
@@ -189,6 +189,11 @@ stugovControllers.controller("meetingDetailCtr", ['$scope', '$routeParams', 'mee
                 }
 
             }
+        });
+        
+        meetingAttendanceAjax.getMeetingAttendance($scope.mid)
+        .then( function (result) {
+              $scope.attendance = result.data; 
         });
 
 }]);

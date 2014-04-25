@@ -4,6 +4,7 @@
 
     <h3>Meeting Information:</h3>
 
+    <!-- Meeting Information -->
     <table>
         <tr>
             <th>Meeting Type:</td>
@@ -18,6 +19,15 @@
                 </td>
         </tr>
         
+    </table>
+
+    <!-- Attendance Information for the Meeting -->
+    <table>
+        <tr ng-repeat='person in attendance'>
+            <th>{{ person.first_name }} {{ person.last_name }}</th>
+            <td>{{ person.present }}</td>
+        </tr>
+
     </table>
     
 </div>
