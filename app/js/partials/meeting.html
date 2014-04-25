@@ -1,21 +1,19 @@
 <div>
 
     <a href="#/insertmeeting" class="btn">Create a New Meeting</a>
-    
-    <br />
-    
-    Search:
+
+    <br />Search:
     <input type="text" ng-model="searchtext" />
 
     <br />
-    
+
     <h1>View Meetings</h1>
 
     <br />
 
     <ul ng-repeat="meeting in meetings | filter:searchtext">
-        
-            <a href="#/meetings/{{ meeting.m_id }}" class='btn'>{{ meeting.type }} {{ meeting.date }}</a>
+
+        <a href="#/meetings/{{ meeting.m_id }}" class='btn'>{{ meeting.type }} {{ meeting.date }}</a>
 
     </ul>
 </div>

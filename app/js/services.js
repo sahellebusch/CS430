@@ -119,8 +119,11 @@ stugovApp.factory('insertMeetingAjax', function ($http) {
         // Function to return person JSON
         insertMeeting: function (type, date) {
 
-            var info = [{"type":type, "date":date}];
-            
+            var info = [{
+                "type": type,
+                "date": date
+            }];
+
             // PHP file that AJAX is calling
             var url = 'app/php/post/insert_meeting.php';
 
@@ -143,7 +146,7 @@ stugovApp.factory('meetingsAjax', function ($http) {
 
         // Function to return person JSON
         getMeetings: function () {
-            
+
             // PHP file that AJAX is calling
             var url = 'app/php/get/get_meetings.php';
 
