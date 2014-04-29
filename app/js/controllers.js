@@ -42,8 +42,8 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax', 'deletePersonAjax',
-    function ($scope, $routeParams, personAjax, deletePersonAjax) {
+stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax', 'deletePersonAjax', '$location',
+    function ($scope, $routeParams, personAjax, deletePersonAjax, $location) {
 
         // Capture the person from the URL from previous page
         $scope.pid = $routeParams.pid;
@@ -57,11 +57,17 @@ stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'pers
                 }
             }
         });
-
-        deletePersonAjax.deletePerson($scope.info.p_id).then( function (result) {
-            
-        });
         
+        $scope.delete = function (pid) {
+            
+            deletePersonAjax.deletePerson(pid).then( function (result) {
+                if (result.data == '1') {
+                    $location.path('/editsuccess');
+                } else {
+                    $location.path('/editfailure');
+                }
+            });
+        };
         
 }]);
 
@@ -98,9 +104,9 @@ stugovControllers.controller("personDetailEditCtr", ['$scope', '$routeParams', '
             updatePersonAjax.updatePerson(angular.copy(info)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('#/editsuccess');
+                    $location.path('/editsuccess');
                 } else {
-                    $location.path('#/editfailure');
+                    $location.path('/editfailure');
                 }
 
             });
@@ -122,9 +128,9 @@ stugovControllers.controller("insertPersonCtr", ['$scope', '$routeParams', '$loc
             insertPersonAjax.insertPerson(angular.copy(info)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('/person/editsuccess');
+                    $location.path('/editsuccess');
                 } else {
-                    $location.path('/person/editfailure');
+                    $location.path('/editfailure');
                 }
             });
 
@@ -170,9 +176,9 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
             insertMeetingAjax.insertMeeting(angular.copy(type), angular.copy(date)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('#/editsuccess');
+                    $location.path('/editsuccess');
                 } else {
-                    $location.path('#/editfailure');
+                    $location.path('/editfailure');
                 }
             });
 
@@ -243,9 +249,9 @@ stugovControllers.controller("meetingDetailEditCtr", ['$scope', '$routeParams', 
             updateMeetingAjax.updateMeeting(angular.copy(info)).then(function (result) {
                 console.log(result.data);
                 if (result.data == '1') {
-                    $location.path('#/editsuccess');
+                    $location.path('/editsuccess');
                 } else {
-                    $location.path('#/editfailure');
+                    $location.path('/editfailure');
                 }
 
             });
