@@ -167,7 +167,20 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
         // data to build the person object
         personAjax.getPerson().then(function (result) {
             $scope.persons = result.data;
+            for (var person in $scope.persons) {
+                
+                $scope.persons[person].attendance = 'present';
+            }
         });
+        
+        $scope.toggleAttendance = function (person) {
+            for (var i = 0; i < $scope.persons.length; i++) {
+                if ($scope.persons[i].p_id == person.p_id) {
+                    $scope.persons[i].attendance = "not present";
+                    console.log($scope.persons);
+                }
+            }
+        };
 
         // Activation on button click to update meeting information
         $scope.send = function (type, date, present) {
