@@ -170,8 +170,12 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
         });
 
         // Activation on button click to update meeting information
-        $scope.send = function (type, date) {
+        $scope.send = function (type, date, present) {
 
+            console.log(present);
+            
+            /*
+            
             // Send new data to Ajax
             insertMeetingAjax.insertMeeting(angular.copy(type), angular.copy(date)).then(function (result) {
                 console.log(result.data);
@@ -181,6 +185,7 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
                     $location.path('/editfailure');
                 }
             });
+            */
 
         };
 }]);

@@ -19,9 +19,10 @@
                         <option value="1">Present</option>
                         <option value="0">Not Present</option>
                     </select></td>
+        {{present}}
     </tr>
     </table>
 
-    <button ng-click="send(type, date)">Submit</button>
+    <button ng-click="send(type, date, present)">Submit</button>
 
 </div>
