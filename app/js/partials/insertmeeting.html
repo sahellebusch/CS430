@@ -1,4 +1,4 @@
-<div>
+<div style="padding-top:30px">
 
     <select ng-model="type">
         <option value="General">General Meeting</option>
@@ -15,12 +15,12 @@
     <table>
     <tr ng-repeat='person in persons'>
         <th>{{ person.first_name }} {{ person.last_name }}</th>
-         <td>
-            <button ng-click="toggleAttendance(person); person.attendance = 'not present'">{{person.attendance}}</button>
+         <td style="padding-bottom:10px; padding-left:20px; padding-top:10px">
+            <button class="btn btn-default" ng-click="person.attendance = toggleAttendance(person)">{{person.attendance}}</button>
         </td>
     </tr>
     </table>
 
-    <button ng-click="send(type, date, present)">Submit</button>
+    <button class="btn btn-default" ng-click="send(type, date, present)">Submit</button>
 
 </div>

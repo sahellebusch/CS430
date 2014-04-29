@@ -176,8 +176,17 @@ stugovControllers.controller("insertMeetingCtr", ['$scope', '$location', 'insert
         $scope.toggleAttendance = function (person) {
             for (var i = 0; i < $scope.persons.length; i++) {
                 if ($scope.persons[i].p_id == person.p_id) {
-                    $scope.persons[i].attendance = "not present";
-                    console.log($scope.persons);
+                    if ($scope.persons[i].attendance == "present") {
+                        $scope.persons[i].attendance = "not present";
+                        console.log($scope.persons);
+                        return "not present";
+                    } else {
+                        $scope.persons[i].attendance = "present";
+                        console.log($scope.persons);
+                        return "present";
+                    }
+                    
+                    
                 }
             }
         };
