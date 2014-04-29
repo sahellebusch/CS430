@@ -104,6 +104,29 @@ stugovApp.factory('updatePersonAjax', function ($http) {
     };
 });
 
+// Factory that deletes a person record
+// Name: deletePersonAjax
+// Last Modified: 4.28.14
+// Parms/Dependencies: $http
+// Returns boolean for success or failure
+stugovApp.factory('deletePersonAjax', function ($http) {
+
+    return {
+
+        // Function to return person JSON
+        deletePerson: function (info) {
+
+            // PHP file that AJAX is calling
+            var url = 'app/php/post/delete_person.php';
+
+            // Return results up the line
+            return $http.post(url, info);
+
+        }
+
+    };
+});
+
 //*************************************MEETING*************************************
 
 

@@ -42,8 +42,8 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
 // Controller for a specific person
 // Params/Dependencies: $scope, $http
 // Services: personDetailAjax
-stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax',
-    function ($scope, $routeParams, personAjax) {
+stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'personAjax', 'deletePersonAjax',
+    function ($scope, $routeParams, personAjax, deletePersonAjax) {
 
         // Capture the person from the URL from previous page
         $scope.pid = $routeParams.pid;
@@ -57,6 +57,12 @@ stugovControllers.controller("personDetailCtr", ['$scope', '$routeParams', 'pers
                 }
             }
         });
+
+        deletePersonAjax.deletePerson($scope.info.p_id).then( function (result) {
+            
+        });
+        
+        
 }]);
 
 // Name: personDetailEditCtr
