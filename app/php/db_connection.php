@@ -6,7 +6,6 @@
  * PHP class to abstract out DB connection
  */
 
-
 class db_connection {
     
     public function connect() {
@@ -21,8 +20,6 @@ class db_connection {
         } catch(PDOException $e) {
             echo 'error: ' . $e->getMessage();
         }
-            
-    
     }
 }
 
