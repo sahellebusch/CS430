@@ -5,7 +5,9 @@
  * Date: 4.22.14
  * PHP backend to insert a meeting into the DB
  */
-    
+  
+include "../db_connection.php";
+
 // Decode JSON object, exit if NULL
 $meeting_data = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($person_data)) {
@@ -18,13 +20,9 @@ $meeting_type = $meeting_data[0]["type"];
 
 if(validateDate($meeting_date)) {
     try {
-        // Database login
-        $dbuser = 'jpf7324';
-        $dbpass = 'oxaetoht';
-        
-        // Connect to DB
-        $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $connect = new db_connection();
+        $db = $connect->connect();
+
         
         // Prepare Statement
         $stmt = $db->prepare("INSERT INTO `meeting`(date, type) 

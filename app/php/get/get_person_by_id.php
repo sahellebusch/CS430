@@ -5,6 +5,8 @@
  * PHP backend to retrieve a person using 'p_id' in student senate
  */
 
+include "../db_connection.php";
+
     try {
  
 // Decode JSON
@@ -13,14 +15,11 @@ if(empty($person_id)) {
     exit("null json object passed");
 }
 try {
-    // Database login
-    $dbuser = 'jpf7324';
-    $dbpass = 'oxaetoht';
-    //Connect to DB
-    $pdo = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $connect = new db_connection();
+    $db = $connect->connect();
+
     // Prepare SQL Statement
-    $stmt = $pdo->prepare("SELECT first_name, last_name, username, banner, phone, date_joined, unexcused_total,         excused_total FROM person WHERE p_id = :p_id");
+    $stmt = $db->prepare("SELECT first_name, last_name, username, banner, phone, date_joined, unexcused_total,         excused_total FROM person WHERE p_id = :p_id");
     // Bind Values
     $stmt->bindValue(':p_id', $person_id['p_id']);
     // Execute SQL Statement

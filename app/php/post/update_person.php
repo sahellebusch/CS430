@@ -6,6 +6,8 @@
  * PHP backend to update a person into the DB
  */
 
+include "../db_connection.php";
+
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($person_data)) {
@@ -26,13 +28,9 @@ $username        = $person_data['username'];
     if(validatePhone($phone) && validateBanner($banner) && validateDate($date_joined)) {
         // Everything is valid; connect, convert, bind and execute.
         try{
-            // Database login
-            $dbuser = 'jpf7324';
-            $dbpass = 'oxaetoht';
-
-            // Connect to DB
-            $db = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
-            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $connect = new db_connection();
+            $db = $connect->connect();
+            
             // Prepare Statement
             $stmt = $db->prepare("UPDATE person SET username = :username, banner = :banner, phone = :phone, date_joined = :date_joined,                                                   first_name = :first_name, last_name = :last_name WHERE p_id = :p_id");
 

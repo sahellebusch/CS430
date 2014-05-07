@@ -7,6 +7,8 @@
  * attendence record by specific meeting id
  */
 
+include "../db_connection.php";
+
 // Decode JSON object, exit if NULL
 $m_id = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($m_id)) {
@@ -14,16 +16,12 @@ if(empty($m_id)) {
 }
 
 try {
-    // Database login
-    $dbuser = 'jpf7324';
-    $dbpass = 'oxaetoht';
-    
-    //Connect to DB
-    $pdo = new PDO("mysql:host=mysql.truman.edu;dbname=jpf7324CS430;charset=utf8", $dbuser, $dbpass); 
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+    // Connect to DB
+    $connect = new db_connection();
+    $db = $connect->connect();
+
     // Prepare SQL 
-    $stmt = $pdo->prepare("SELECT last_name, first_name, present FROM person, attendance_meeting WHERE person.p_id = attendance_meeting.p_id AND attendance_meeting.m_id = :m_id");
+    $stmt = $db ->prepare("SELECT last_name, first_name, present FROM person, attendance_meeting WHERE person.p_id = attendance_meeting.p_id AND attendance_meeting.m_id = :m_id");
     
     // Bind meeting date
     $stmt->bindValue(':m_id', $m_id);
