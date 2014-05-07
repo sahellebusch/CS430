@@ -1,4 +1,4 @@
-CS430
+Student Government App
 =====
 
-Projects for classes
+A Web Application for use by the Student Government organization. It primarily deals with maintenance of Student Government infrustructure and continuation of productivity.
