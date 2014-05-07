@@ -14,6 +14,7 @@ $person_id = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($person_id)) {
     exit("null json object passed");
 }
+
 try {
     $connect = new db_connection();
     $db = $connect->connect();
