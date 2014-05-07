@@ -33,6 +33,7 @@ stugovControllers.controller("personCtr", ['$scope', 'personAjax',
         // Call the service personAjax and then use the returned
         // data to build the person object
         personAjax.getPerson().then(function (result) {
+            console.log(result.data);
             $scope.persons = result.data;
         });
 }]);
