@@ -5,7 +5,7 @@
  * PHP backend to retrieve a person using 'p_id' in student senate
  */
 
-include "../db_connection.php";
+include "../pdo_connection.php";
 
     try {
  
@@ -16,11 +16,11 @@ if(empty($person_id)) {
 }
 
 try {
-    $connect = new db_connection();
-    $db = $connect->connect();
+    $connect = new pdo_connection();
+    $pdo = $connect->connect();
 
     // Prepare SQL Statement
-    $stmt = $db->prepare("SELECT first_name, last_name, username, banner, phone, date_joined, unexcused_total,         excused_total FROM person WHERE p_id = :p_id");
+    $stmt = $pdo->prepare("SELECT first_name, last_name, username, banner, phone, date_joined, unexcused_total,         excused_total FROM person WHERE p_id = :p_id");
     // Bind Values
     $stmt->bindValue(':p_id', $person_id['p_id']);
     // Execute SQL Statement

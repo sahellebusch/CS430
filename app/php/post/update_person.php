@@ -6,7 +6,7 @@
  * PHP backend to update a person into the DB
  */
 
-include "../db_connection.php";
+include "../pdo_connection.php";
 include "../validations.php";
 
 // Decode JSON object, exit if NULL
@@ -33,11 +33,11 @@ if($validate->validatePhone($phone)
     // Everything is valid; connect, convert, bind and execute.
     try{
         
-        $connect = new db_connection();
-        $db = $connect->connect();
+        $connect = new pdo_connection();
+        $pdo = $connect->connect();
 
         // Prepare Statement
-        $stmt = $db->prepare("UPDATE person SET username = :username, banner = :banner, phone = :phone, date_joined = :date_joined, first_name = :first_name, last_name = :last_name WHERE p_id = :p_id");
+        $stmt = $pdo->prepare("UPDATE person SET username = :username, banner = :banner, phone = :phone, date_joined = :date_joined, first_name = :first_name, last_name = :last_name WHERE p_id = :p_id");
 
         $banner = (int) $banner;
         $phone  = (int) $phone;

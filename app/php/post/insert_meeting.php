@@ -6,7 +6,7 @@
  * PHP backend to insert a meeting into the DB
  */
   
-include "../db_connection.php";
+include "../pdo_connection.php";
 include "../validations.php";
 
 // Decode JSON object, exit if NULL
@@ -24,12 +24,12 @@ $validate = new validations();
 if($vlidations->validateDate($meeting_date)) {
     try {
         
-        $connect = new db_connection();
-        $db = $connect->connect();
+        $connect = new pdo_connection();
+        $pdo = $connect->connect();
 
         
         // Prepare Statement
-        $stmt = $db->prepare("INSERT INTO `meeting`(date, type) 
+        $stmt = $pdo->prepare("INSERT INTO `meeting`(date, type) 
          VALUES (:meeting_date, :meeting_type)");
         
         // Bind values (convert any if necessary)

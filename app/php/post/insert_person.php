@@ -6,7 +6,7 @@
  * PHP backend to insert a person into the DB
  */
 
-include "../db_connection.php";
+include "../pdo_connection.php";
 include "../validations.php";
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
@@ -14,7 +14,7 @@ if(empty($person_data)) {
     exit("null json object passed");
 }
 
-$connect = new db_connection();
+$connect = new pdo_connection();
 $validate = new validations();
 
 // Unpack json object.
@@ -31,9 +31,9 @@ $username        = $person_data['username'];
      
         // Everything is valid; connect, convert, bind and execute.
         try {    
-            $db = $connect->connect();
+            $pdo = $connect->connect();
             // Prepare Statement
-            $stmt = $db->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
+            $stmt = $pdo->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");
             
             // Bind values (convert any if necessary)
             $stmt->bindValue(':username', $username);
