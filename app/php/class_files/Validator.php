@@ -28,7 +28,7 @@ class Validator {
                && strlen($banner) <= 10);
     }
 
-    
+    // validates phone number
     function validatePhone($phone) {
         //eliminate every char except 0-9
         $phone = $justNums = str_replace('-', '', $phone);

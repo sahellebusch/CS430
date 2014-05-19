@@ -17,8 +17,16 @@ class TestValidations extends PHPUnit_framework_TestCase {
     }
     
     //////////// Test banner validation method ////////////
-    public function testValidateBannerGoodNumber() {
+    public function testValidateBannerGoodNumberHighEdge() {
         $this->assertTrue($this->val->validateBanner(1234567890));
+    }
+    
+    public function testValidateBannerGoodNumberLowEdge() {
+        $this->assertTrue($this->val->validateBanner(1));
+    }
+    
+    public function testValidateBannerGoodNumberMiddle() {
+        $this->assertTrue($this->val->validateBanner(1234567));
     }
     
     public function testValidateBannerNonNumber() {
@@ -58,7 +66,7 @@ class TestValidations extends PHPUnit_framework_TestCase {
        $this->assertFalse($this->val->validateDate('2000000-02-02'));
     }
     
-    //////////// Test date validation method ////////////
+    //////////// Test date phone validation method ////////////
     public function testValidatePhoneGoodNumberWithHyphens10Digits() {
         $this->assertTrue($this->val->validatePhone('111-111-1111'));
     }
