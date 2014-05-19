@@ -45,7 +45,7 @@ class TestValidations extends PHPUnit_framework_TestCase {
     }
     
     public function testValidatePhoneTooManyDigits() {
-        $this->assertFalse($this->val->validatePhone(1234567890123456));
+        $this->assertFalse($this->val->validatePhone(1234567890));
     }
     
     public function tearDown() {
