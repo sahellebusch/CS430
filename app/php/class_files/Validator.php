@@ -28,12 +28,15 @@ class Validator {
 
     // Validates phone number
     function validatePhone($phone) {
-        if(preg_match("/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i", $phone)) {
-            return true;
-        } else {
-            return false;
-        }
+    $numbersOnly = ereg_replace("[^0-9]", "", $phone);
+    $numberOfDigits = strlen($numbersOnly);
+    if ($numberOfDigits == 7 or $numberOfDigits == 10) {
+        return true;
+    } else {
+        return false;
     }
+} 
+    
 }
 
 ?>
