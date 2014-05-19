@@ -6,16 +6,15 @@
  * PHP backend to insert a person into the DB
  */
 
-include "../class_files/pdo_connection.php";
-include "../class_files/validations.php";
+include "../class_files/PDO_Connector.php";
+include "../class_files/Validator.php";
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($person_data)) {
     exit("null json object passed");
 }
 
-$connect = new pdo_connection();
-$validate = new validations();
+$validate = new Validator();
 
 // Unpack json object.
 $banner          = $person_data['banner'];
@@ -30,7 +29,8 @@ $username        = $person_data['username'];
     && $validate->validateDate($date_joined)) {
      
         // Everything is valid; connect, convert, bind and execute.
-        try {    
+        try {
+            $connect = new PDO_Connector();
             $pdo = $connect->connect();
             // Prepare Statement
             $stmt = $pdo->prepare("INSERT INTO `person`(username, banner, phone, date_joined, first_name, last_name) VALUES (:username, :banner, :phone, :date_joined, :first_name, :last_name)");

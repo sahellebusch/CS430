@@ -7,7 +7,7 @@
  * attendence record by specific meeting id
  */
 
-include "../class_files/pdo_connection.php";
+include "../class_files/PDO_Connector.php";
 
 // Decode JSON object, exit if NULL
 $m_id = json_decode(file_get_contents("php://input"), TRUE);
@@ -17,7 +17,7 @@ if(empty($m_id)) {
 
 try {
     // Connect to DB
-    $connect = new pdo_connection();
+    $connect = new PDO_Connector();
     $pdo = $connect->connect();
 
     // Prepare SQL 

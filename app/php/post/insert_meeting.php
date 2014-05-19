@@ -6,8 +6,8 @@
  * PHP backend to insert a meeting into the DB
  */
   
-include "../class_files/pdo_connection.php";
-include "../class_files/validations.php";
+include "../class_files/PDO_Connector.php";
+include "../class_files/Validator.php";
 
 // Decode JSON object, exit if NULL
 $meeting_data = json_decode(file_get_contents("php://input"), TRUE);
@@ -20,11 +20,11 @@ $meeting_date = $meeting_data[0]["date"];
 $meeting_type = $meeting_data[0]["type"];
 
 // Create validator 
-$validate = new validations();
+$validate = new Validator();
 if($vlidations->validateDate($meeting_date)) {
     try {
         
-        $connect = new pdo_connection();
+        $connect = new PDO_Connector();
         $pdo = $connect->connect();
 
         

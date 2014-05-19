@@ -5,11 +5,11 @@
  * PHP backend to retrieve previous 15 'meetings' in student senate
  */
 
-include "../class_files/pdo_connection.php";
+include "../class_files/PDO_Connector.php";
 
     try {
  
-    $connect = new pdo_connection();
+    $connect = new PDO_Connector();
     $pdo = $connect->connect();
 
     $stmt = $pdo ->prepare("SELECT * FROM  `meeting` GROUP BY DATE LIMIT 0 , 15");

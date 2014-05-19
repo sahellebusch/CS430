@@ -5,11 +5,11 @@
  * PHP backend to retrieve all 'persons' in student senate
  */
 
-include "../class_files/pdo_connection.php";
+include "../class_files/PDO_Connector.php";
 
     try {
  
-    $connect = new pdo_connection();
+    $connect = new PDO_Connector();
     $pdo = $connect->connect();
 
 

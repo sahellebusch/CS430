@@ -6,7 +6,7 @@
  * PHP class to abstract data validations
  */
 
-class validations {
+class Validator {
 
     // Function to validate date_joined.
     function validateDate($date_joined) {
@@ -26,11 +26,13 @@ class validations {
         return(strlen($banner) <= 10);
     }
 
-    // Validates phone number.
+    // Validates phone number
     function validatePhone($phone) {
-        //eliminate every char except 0-9
-        $justNums = preg_replace("/[^0-9]/", '', $phone);
-        return((strlen($justNums) <= 10));
+        if(preg_match("/^([1]-)?[0-9]{3}-[0-9]{3}-[0-9]{4}$/i", $phone)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

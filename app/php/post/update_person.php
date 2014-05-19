@@ -6,8 +6,8 @@
  * PHP backend to update a person into the DB
  */
 
-include "../class_files/pdo_connection.php";
-include "../class_files/validations.php";
+include "../class_files/PDO_Connector.php";
+include "../class_files/Validator.php";
 
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
@@ -26,14 +26,14 @@ $last_name       = $person_data['last_name'];
 $date_joined     = $person_data['date_joined'];
 $username        = $person_data['username'];
 
-$validate = new validations();
+$validate = new Validator();
 if($validate->validatePhone($phone) 
    && $validate->validateBanner($banner) 
    && $validate->validateDate($date_joined)) {
     // Everything is valid; connect, convert, bind and execute.
     try{
         
-        $connect = new pdo_connection();
+        $connect = new PDO_Connector();
         $pdo = $connect->connect();
 
         // Prepare Statement

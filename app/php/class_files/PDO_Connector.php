@@ -6,7 +6,7 @@
  * PHP class to abstract out DB connection
  */
 
-class pdo_connection {
+class PDO_Connector {
     
     public function connect() {
         try {

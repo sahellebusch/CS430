@@ -8,7 +8,7 @@
  * access allowed with TSU access)
  */
  
-include "../class_files/pdo_connection.php";
+include "../class_files/PDO_Connector.php";
 
 // Decode JSON
 $person_id = json_decode(file_get_contents("php://input"), TRUE);
@@ -19,7 +19,7 @@ if(empty($person_id)) {
 try {
     $p_id = $person_id;
     
-    $connect = new pdo_connection();
+    $connect = new PDO_Connector();
     $pdo = $connect->connect();
 
     
