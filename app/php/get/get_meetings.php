@@ -5,7 +5,7 @@
  * PHP backend to retrieve previous 15 'meetings' in student senate
  */
 
-include "../pdo_connection.php";
+include "../class_files/pdo_connection.php";
 
     try {
  

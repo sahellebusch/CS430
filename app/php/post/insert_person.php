@@ -6,8 +6,8 @@
  * PHP backend to insert a person into the DB
  */
 
-include "../pdo_connection.php";
-include "../validations.php";
+include "../class_files/pdo_connection.php";
+include "../class_files/validations.php";
 // Decode JSON object, exit if NULL
 $person_data = json_decode(file_get_contents("php://input"), TRUE);
 if(empty($person_data)) {

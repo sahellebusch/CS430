@@ -5,7 +5,7 @@
  * PHP backend to retrieve all 'persons' in student senate
  */
 
-include "../pdo_connection.php";
+include "../class_files/pdo_connection.php";
 
     try {
  

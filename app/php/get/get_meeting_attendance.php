@@ -7,7 +7,7 @@
  * attendence record by specific meeting id
  */
 
-include "../pdo_connection.php";
+include "../class_files/pdo_connection.php";
 
 // Decode JSON object, exit if NULL
 $m_id = json_decode(file_get_contents("php://input"), TRUE);

@@ -6,8 +6,8 @@
  * PHP backend to insert a meeting into the DB
  */
   
-include "../pdo_connection.php";
-include "../validations.php";
+include "../class_files/pdo_connection.php";
+include "../class_files/validations.php";
 
 // Decode JSON object, exit if NULL
 $meeting_data = json_decode(file_get_contents("php://input"), TRUE);

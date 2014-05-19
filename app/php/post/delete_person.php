@@ -8,7 +8,7 @@
  * access allowed with TSU access)
  */
  
-include "../pdo_connection.php";
+include "../class_files/pdo_connection.php";
 
 // Decode JSON
 $person_id = json_decode(file_get_contents("php://input"), TRUE);

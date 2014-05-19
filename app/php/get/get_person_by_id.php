@@ -5,7 +5,7 @@
  * PHP backend to retrieve a person using 'p_id' in student senate
  */
 
-include "../pdo_connection.php";
+include "../class_files/pdo_connection.php";
 
     try {
  
