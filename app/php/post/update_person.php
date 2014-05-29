@@ -27,9 +27,11 @@ $date_joined     = $person_data['date_joined'];
 $username        = $person_data['username'];
 
 $validate = new Validator();
+    echo("created vaidator");   
 if($validate->validatePhone($phone) 
    && $validate->validateBanner($banner) 
    && $validate->validateDate($date_joined)) {
+    echo("past validations");   
     // Everything is valid; connect, convert, bind and execute.
     try{
         

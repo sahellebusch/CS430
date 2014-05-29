@@ -26,7 +26,8 @@ class Validator {
         return(is_int($banner) 
                && !(strlen($banner) == 0) 
                && strlen($banner) <= 10);
-    } 
+    }
+
     // validates phone number
     function validatePhone($phone) {
         //eliminate every char except 0-9
